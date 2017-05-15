@@ -7,7 +7,7 @@
   * Setting up steps:
     * `npm install`
     * If you don't have postgresSQl go install it here: http://postgresapp.com/ 
-    * Then run `sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee/etc/paths.d/postgresapp`  --> This will configure your PATH so you can use the psql command line
+    * Then run `sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee/etc/paths.d/postgresapp`  --> This will configure your PATH so you can use the psql command line tools. Then restart your terminal!
     * `psql -f ./database/users.sql`
     * Then run
     * `npm start` - visit `/api/users` - should see a json response.
