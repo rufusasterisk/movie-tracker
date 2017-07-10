@@ -6,17 +6,33 @@
   * Using PostgreSQL
   * Setting up steps:
     * `npm install`
-    * If you don't have postgresSQl go install it here: http://postgresapp.com/ 
-     * Then run `sudo mkdir -p /etc/paths.d &&
-        echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp` 
-        --> This will configure your PATH so you can use the psql command line tools. Then restart your terminal!
-    * Run `createdb`
-    * `psql -f ./database/users.sql`
+    * If you don't have postgresSQl, scroll down to `Setup Postgresql` and follow those steps.
     * Then run `npm run build`
     * Lastly run `npm start` - visit `/api/users` - should see a json response.
   * 2 APIs - MovieDB and your very own api
   * Fetch upcoming movies from MovieDB
 
+## Setup Postgresql
+
+### What is Postgresql?
+* PostgreSQL is a powerful, open source object-relational database system
+
+### Installation:
+* Install Homebrew. Homebrew is a package manager for MacOS.
+	*  */usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)*
+	
+* Install Postgresql  
+	*  *brew install postgresql*	
+	
+### Running Postgres
+* Start Postgres  
+  * `psql -f ./database/users.sql` will drop and recreate your database. 
+	* *postgres -D /usr/local/var/postgres* (You could create an alias for this)
+	
+### Press CMD-T to create a new tab in your terminal
+* Type *psql*. This will get you into the interactive postgres terminal. From here you can run postgres and sql commands. You might get an error *psql: FATAL: database "username" does not exist* To resolve this error type *createdb 'somthing does not exist'*
+
+### [PSQL Commands](http://postgresguide.com/utilities/psql.html)
 
 ### API
   Hopefully you will be using fetch to make all your api calls. If you are making a post request note that you will need to pass in headers - with a `'Content-Type': 'application/json'`. Additionally you will need to pass any any required fields into the body.
