@@ -84,4 +84,4 @@
 Extensions:
   * A user stays signed in after refreshing the page. *Hint:* You will probably use localStorage. 
   * Should only take real email addresses *Hint:* Look into regular expressions
-  
+  * A user can click and view any individual movie.
