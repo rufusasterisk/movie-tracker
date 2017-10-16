@@ -18,15 +18,15 @@
 * PostgreSQL is a powerful, open source object-relational database system
 
 #### Installation:
-* Install Postgresql via postgres.app
-	*  visit [postgresapp.com](http://postgresapp.com)
-  *  download the app
-  *  follow all the steps (1-3) to complete the install
+* Install Homebrew. Homebrew is a package manager for MacOS.
+	*  */usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)*
+	
+* Install Postgresql  
+	*  *brew install postgresql*	
 	
 #### Running Postgres
 * Start Postgres  
-  * `psql -f ./database/users.sql` will drop and recreate your database. Make sure you run this from the directory of
-    the project
+  * `psql -f ./database/users.sql` will drop and recreate your database. 
 	* *postgres -D /usr/local/var/postgres* (You could create an alias for this)
 	
 #### Press CMD-T to create a new tab in your terminal
@@ -35,7 +35,7 @@
 #### [PSQL Commands](http://postgresguide.com/utilities/psql.html)
 
 ## API
-  You will be using fetch to make all your api calls. If you are making a post request note that you will need to pass in headers - with a `'Content-Type': 'application/json'`. Additionally you will need to pass any any required fields into the body.
+  Hopefully you will be using fetch to make all your api calls. If you are making a post request note that you will need to pass in headers - with a `'Content-Type': 'application/json'`. Additionally you will need to pass any any required fields into the body.
 
 ###### Users
 
