@@ -58,7 +58,7 @@
   "jest": {
     "setupFiles": [
       "raf/polyfill",
-      "./config/setupTests.js"
+      "./testConfig/setupTests.js"
     ],
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/testConfig/styleMock.js"
