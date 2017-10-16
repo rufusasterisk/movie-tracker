@@ -131,6 +131,20 @@ The output from ESLint shows…
 * 2 - Six to ten complaints
 * 1 - More than ten complaints
 
+### Redux Architecture
+
+* 4: Appropriate components are wrapped in connected Redux container components. The Redux store contains all necessary application data and nothing more. All state changes are handled through Redux actions and reducers.
+* 3: At least one component is not connected with Redux appropriately. Application state is mutated by more than just Redux. The Redux store is missing application data that it should be handling.
+* 2: Application state is mostly outside the control of Redux. Application did not make use of Redux actions and reducers to mutate state. Components do not demonstrate a clear understanding of stateful vs. statelessness.
+* 1: Application does not make use of Redux to manage state. There are little or no connected components.
+
+### Routing
+
+* 4: Application is a single page and uses the React Router to display appropriate components based on URL.
+* 3: Application is a single page and uses the React Router but does not display the appropriate components upon navigating.
+* 2: Application does not render/cannot find additional routes.
+* 1: Application did not use a Router
+
 ### Workflow
 
 - 4 - Developer(s) make many small, atomic commits that clearly document the evolution of the application and do not contain irrelevant changesets that aren't reflected by the commit message. Commit messages are concise and consistent in syntax and tense. Developer(s) effectively use git branches and pull requests when applicable to incorporate changes into the application, and are not pushing directly to master. There are no instances where the developer(s) have committed source code that should be .gitignored. There are no instances of "dead" or commented-out code and debugger statements like console.log.
