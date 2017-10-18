@@ -6,3 +6,5 @@ const displayMoviesReducer = (state =[], action) => {
       return state;
   }
 }
+
+export default displayMoviesReducer;
