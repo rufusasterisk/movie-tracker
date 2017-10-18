@@ -8,8 +8,6 @@ const getRecentMovies = () => {
 
 const cleanMovieData = rawMovieData => {
   return rawMovieData.map( movie => {
-  // const myMovies = rawMovieData.map( movie => {
-    console.log(movie);
     return {
       id: movie.id,
       title: movie.title,
@@ -21,6 +19,5 @@ const cleanMovieData = rawMovieData => {
       backdrop: movie.backdrop_path
     };
   });
-  // console.log(myMovies);
 };
 export default getRecentMovies;

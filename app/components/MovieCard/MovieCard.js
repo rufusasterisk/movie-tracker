@@ -8,7 +8,6 @@ const MovieCard = ({
   poster,
   backdrop
 }) => {
-  console.log(poster);
   return (
     <div className="movie-card">
       <img src={`http://image.tmdb.org/t/p/w500${poster}`} />
