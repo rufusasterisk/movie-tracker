@@ -1,4 +1,4 @@
-import apiKey from './apiKey';
+import { apiKey } from './apiKey';
 
 const getRecentMovies = () => {
   return fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`)
