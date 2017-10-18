@@ -100,18 +100,9 @@ export default class Login extends Component {
   }
 
   render() {
-    const generatorReturn = this.state.loginDisplayed
+    return this.state.loginDisplayed
       ? this.generateLoginTab()
       : this.generateNewUserTab();
-    return (
-      <div>
-        <nav
-          className={this.state.loginDisplayed ? 'login' : 'newUser'}>
-        </nav>
-        {/* tab display and tab switching element/code */}
-        {generatorReturn}
-      </div>
-    );
   }
 
 }
