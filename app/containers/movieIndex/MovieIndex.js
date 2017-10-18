@@ -20,7 +20,9 @@ class MovieIndex extends Component {
         key={`CardID-${movie.id}`}
         title={movie.title}
         description={movie.description}
-        voteAvg={movie.voteAvg} />
+        voteAvg={movie.voteAvg}
+        poster={movie.poster}
+        backdrop={movie.backdrop}/>
     ));
   }
 
