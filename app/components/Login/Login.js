@@ -9,8 +9,9 @@ export default class Login extends Component {
       name: '',
       password: '',
       verifyPassword: '',
-      displayedTab: 'login'
+      loginDisplayed: true
     };
+    this.toggleLogin = this.toggleLogin.bind(this);
   }
 
   handleChange(key, event) {
@@ -22,44 +23,92 @@ export default class Login extends Component {
   handleSubmit(){
 
   }
-
-
+  toggleLogin() {
+    this.setState({
+      loginDisplayed: !this.state.loginDisplayed
+    });
+  }
 
   generateLoginTab() {
     return (
-      <form>
-        <input
-          className='login-email'
-          onChange={this.handleChange.bind(this, 'email')}
-          placeholder='Email'
-          type='text'
-          value={this.state.email} />
-        <input
-          className='login-password'
-          onChange={this.handleChange.bind(this, 'password')}
-          placeholder='Password'
-          type='text'
-          value={this.state.password} />
-        <input
-          className='login-submit'
-          onClick={this.handleSubmit}
-          type='submit'
-          value='Login'
-        />
-      </form>
+      <section>
+        <button disabled>Login</button>
+        <button onClick={this.toggleLogin}>Create</button>
+        <form>
+          <input
+            className='login-email'
+            onChange={this.handleChange.bind(this, 'email')}
+            placeholder='Email'
+            type='text'
+            value={this.state.email} />
+          <input
+            className='login-password'
+            onChange={this.handleChange.bind(this, 'password')}
+            placeholder='Password'
+            type='text'
+            value={this.state.password} />
+          <input
+            className='login-submit'
+            onClick={this.handleLogin}
+            type='submit'
+            value='Login'
+          />
+        </form>
+      </section>
     );
   }
 
   generateNewUserTab() {
-
+    return (
+      <section>
+        <button onClick={this.toggleLogin}>Login</button>
+        <button disabled>Create</button>
+        <form>
+          <input
+            className='login-name'
+            onChange={this.handleChange.bind(this, 'name')}
+            placeholder='Name'
+            type='text'
+            value={this.state.name} />
+          <input
+            className='login-email'
+            onChange={this.handleChange.bind(this, 'email')}
+            placeholder='Email'
+            type='text'
+            value={this.state.email} />
+          <input
+            className='login-password'
+            onChange={this.handleChange.bind(this, 'password')}
+            placeholder='Password'
+            type='text'
+            value={this.state.password} />
+          <input
+            className='login-verify-password'
+            onChange={this.handleChange.bind(this, 'verifyPassword')}
+            placeholder='Verify Password'
+            type='text'
+            value={this.state.verifyPassword} />
+          <input
+            className='login-submit'
+            onClick={this.handleCreateUser}
+            type='submit'
+            value='Create New User'
+          />
+        </form>
+      </section>
+    );
   }
 
   render() {
-    const generatorReturn = this.state.displayedTab === 'login'
+    const generatorReturn = this.state.loginDisplayed
       ? this.generateLoginTab()
       : this.generateNewUserTab();
     return (
       <div>
+        <nav
+          className={this.state.loginDisplayed ? 'login' : 'newUser'}>
+        </nav>
+        {/* tab display and tab switching element/code */}
         {generatorReturn}
       </div>
     );
