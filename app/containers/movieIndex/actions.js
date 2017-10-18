@@ -1,4 +1,4 @@
-export const displayMovies = movies => ({ 
+export const displayMovies = movieArray => ({ 
   type: 'DISPLAY_MOVIES',
-  movies
+  movieArray
 });
