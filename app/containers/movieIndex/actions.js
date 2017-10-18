@@ -5,7 +5,7 @@ export const displayMovies = movieArray => ({
   movieArray
 });
 
-// export const grabMovies = () => dispatch => {
-//   getRecentMovies()
-//     .then(movieArray => dispatch(displayMovies(movieArray)))
-// }
+export const grabMovies = () => dispatch => {
+  getRecentMovies()
+    .then(movieArray => dispatch(displayMovies(movieArray)));
+};

@@ -3,30 +3,34 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import {connect} from 'react-redux';
 import getRecentMovies from '../../utils/getRecentMovies';
 import {displayMovies} from './actions';
+import PropTypes from 'prop-types';
 
 class MovieIndex extends Component {
   constructor() {
     super();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props !== nextProps
+  shouldComponentUpdate(nextProps) {
+    return this.props !== nextProps;
   }
 
   generateCards(movieArray) {
-  return movieArray.map( movie => (
-          <MovieCard
-            title={movie.title}
-            description={movie.description}
-            voteAvg={movie.voteAvg} />
-        ))
+    return movieArray.map( movie => (
+      <MovieCard
+        key={`CardID-${movie.id}`}
+        title={movie.title}
+        description={movie.description}
+        voteAvg={movie.voteAvg}
+        poster={movie.poster}
+        backdrop={movie.backdrop}/>
+    ));
   }
 
   render() {
     const { movieArray } = this.props;
     const mappedMovieCards = this.props.movieArray.length
-       ? this.generateCards(movieArray)
-       : null
+      ? this.generateCards(movieArray)
+      : null;
 
     return (
       <div>
@@ -36,9 +40,15 @@ class MovieIndex extends Component {
   }
 }
 
+MovieIndex.propTypes = {
+  movieArray: PropTypes.array
+};
+
+
 const mapStateToProps = store => ({
   movieArray: store.displayMoviesReducer
 
 });
+
 
 export default connect(mapStateToProps, undefined)(MovieIndex);
