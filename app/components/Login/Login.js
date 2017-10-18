@@ -20,9 +20,15 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit(){
+  handleLogin() {
+    // send email and password through API to the postgres DB
+    //
+  }
+
+  handleCreateUser() {
 
   }
+
   toggleLogin() {
     this.setState({
       loginDisplayed: !this.state.loginDisplayed
