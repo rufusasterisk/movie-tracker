@@ -13,10 +13,14 @@ export default class Login extends Component {
     };
   }
 
-  handleChange(event, key) {
+  handleChange(key, event) {
     this.setState({
       [key]: event.target.value
     });
+  }
+
+  handleSubmit(){
+
   }
 
 
@@ -38,7 +42,7 @@ export default class Login extends Component {
           value={this.state.password} />
         <input
           className='login-submit'
-          onClick={this.someNewHandler}
+          onClick={this.handleSubmit}
           type='submit'
           value='Login'
         />
