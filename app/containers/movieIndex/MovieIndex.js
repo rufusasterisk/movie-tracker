@@ -10,6 +10,6 @@ export default class MovieIndex extends Component {
       <div>
       MOVIES
       </div>
-    )
+    );
   }
 }
