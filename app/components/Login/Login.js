@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import { tryLogin } from './actions';
 
 class Login extends Component {
-  constructor( { loginRequested, loginFailure, loginSuccessful } ) {
+  constructor() {
     super();
     this.state = {
-      email: '',
+      email: 'b',
       name: '',
-      password: '',
+      password: 'c',
       verifyPassword: '',
       loginDisplayed: true
-    //   loginData: 'No Data (yet)'
     };
     this.toggleLogin = this.toggleLogin.bind(this);
   }
@@ -25,25 +24,26 @@ class Login extends Component {
 
   handleLogin(event) {
     event.preventDefault();
-    const body = {
-      email: this.state.email.toLowerCase(),
-      password: this.state.password
-    };
-    const fetchParameters = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    fetch('http://localhost:3000/api/users', fetchParameters)
-      .then(receivedData => receivedData.json())
-      .then(cleanedData => {
-        this.setState({
-          loginData: JSON.stringify(cleanedData)
-        });
-        //trigger Action to update logged in user in Store
-      });
+    this.props.tryLogin({email: this.state.email, password: this.state.password});
+    // const body = {
+    //   email: this.state.email.toLowerCase(),
+    //   password: this.state.password
+    // };
+    // const fetchParameters = {
+    //   method: 'POST',
+    //   body: JSON.stringify(body),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // };
+    // fetch('http://localhost:3000/api/users', fetchParameters)
+    //   .then(receivedData => receivedData.json())
+    //   .then(cleanedData => {
+    //     this.setState({
+    //       loginData: JSON.stringify(cleanedData)
+    //     });
+    //     //trigger Action to update logged in user in Store
+    //   });
   }
 
   handleCreateUser(event) {
@@ -75,8 +75,8 @@ class Login extends Component {
         });
       })
       .catch(() => {
-        fakeProps.createError = true;
-        debugger;
+        // fakeProps.createError = true;
+        // debugger;
         // this.setState({
         //   loginData: `There was a problem creating a new user`
         // });
@@ -110,6 +110,7 @@ class Login extends Component {
           <input
             className='login-submit'
             onClick={this.handleLogin.bind(this)}
+            // onClick={event => { event.preventDefault(); this.props.tryLogin(); }}
             type='submit'
             value='Login'
           />
@@ -159,7 +160,7 @@ class Login extends Component {
           />
         </form>
         <div>
-          {fakeProps.createError ? 'That email is in use' : null}
+          {/* {fakeProps.createError ? 'That email is in use' : null} */}
         </div>
       </section>
     );
@@ -173,4 +174,23 @@ class Login extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+Login.propTypes = {
+  loginRequested: PropTypes.bool,
+  loginFailure: PropTypes.bool,
+  loginSuccessful: PropTypes.bool,
+  tryLogin: PropTypes.func
+};
+
+const mapStateToProps = store => ({
+  loginRequested: store.loginRequested,
+  loginFailure: store.loginFailure,
+  loginSuccessful: store.loginSuccessful
+});
+
+const mapDispatchToProps = dispatch => ({
+  tryLogin: (loginObject) => {
+    dispatch(tryLogin(loginObject));
+  }});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

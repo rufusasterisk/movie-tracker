@@ -45,7 +45,10 @@ export const loginSuccessful = (userData) => ({
 //fetchPayloadBody = {email: ****, password: ****}
 export const tryLogin = (fetchPayloadBody) => dispatch => {
   dispatch(loginRequested(true));
-  fetch(hostAddress, buildFetchPayload(fetchPayloadBody))
+  console.log(hostAddress);
+  console.log(fetchPayloadBody);
+  console.log(buildFetchPayload(fetchPayloadBody));
+  fetch(`http://localhost:3000/api/users`, buildFetchPayload(fetchPayloadBody))
     .then(response => {
       if (response.status !== 200){
         throw Error();
@@ -57,8 +60,10 @@ export const tryLogin = (fetchPayloadBody) => dispatch => {
       dispatch(loginFailure(false));
       dispatch(loginSuccessful(parsedData));
     })
-    .catch(()=>{
+    .catch((error)=>{
+      console.log(error);
       dispatch(loginFailure(true));
+      dispatch(loginRequested(false));
     });//set into state)
 
   //fetch call
