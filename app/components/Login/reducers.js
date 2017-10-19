@@ -42,3 +42,30 @@ export const currentUserName = (state = '', action) => {
     return state;
   }
 };
+
+export const createUserRequested = (state = false, action) => {
+  switch (action.type) {
+    case 'CREATE_USER_REQUESTED':
+      return action.status;
+    default:
+      return state;
+  }
+};
+
+export const createUserFailure = (state = false, action) => {
+  switch (action.type) {
+    case 'CREATE_USER_FAILURE':
+      return action.status;
+    default:
+      return state;
+  }
+};
+
+export const createUserSuccess = (state = false, action) => {
+  switch (action.type) {
+    case 'CREATE_USER_SUCCESS':
+      return action.status;
+    default:
+      return state;
+  }
+};

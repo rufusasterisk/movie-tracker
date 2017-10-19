@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { tryLogin } from './actions';
+import { tryLogin, createUser } from './actions';
 import { Redirect } from 'react-router';
 
 class Login extends Component {
@@ -32,39 +32,11 @@ class Login extends Component {
 
   handleCreateUser(event) {
     event.preventDefault();
-    //add pw verification code here (password length, matches pw confirmation
-    const body = {
+    this.props.createUser({
       email: this.state.email.toLowerCase(),
       password: this.state.password,
       name: this.state.name.toLowerCase()
-    };
-    const fetchParameters = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetch('http://localhost:3000/api/users/new', fetchParameters)
-      .then(receivedData => {
-        if (receivedData.status !== 200) {
-          throw Error(receivedData);
-        }
-        return receivedData.json();
-      })
-      .then(cleanedData => {
-        this.setState({
-          loginData: JSON.stringify(cleanedData)
-        });
-      })
-      .catch(() => {
-        // fakeProps.createError = true;
-        // debugger;
-        // this.setState({
-        //   loginData: `There was a problem creating a new user`
-        // });
-      });
+    });
   }
 
   toggleLogin() {
@@ -192,7 +164,10 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   tryLogin: (loginObject) => {
     dispatch(tryLogin(loginObject));
-  }});
-
+  },
+  createUser: (createUserObject)  => {
+    dispatch(createUser(createUserObject))
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
