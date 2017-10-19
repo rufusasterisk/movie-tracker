@@ -25,7 +25,7 @@ export default class Login extends Component {
     event.preventDefault();
     const body = {
       email: this.state.email.toLowerCase(),
-      password: this.state.password.toLowerCase()
+      password: this.state.password
     };
     const fetchParameters = {
       method: 'POST',
@@ -43,8 +43,39 @@ export default class Login extends Component {
       });
   }
 
-  handleCreateUser() {
+  handleCreateUser(event) {
+    event.preventDefault();
+    //add pw verification code here (password length, matches pw confirmation
+    const body = {
+      email: this.state.email.toLowerCase(),
+      password: this.state.password,
+      name: this.state.name.toLowerCase()
+    };
+    const fetchParameters = {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
+    fetch('http://localhost:3000/api/users/new', fetchParameters)
+      .then(receivedData => {
+        if (receivedData.status !== 200) {
+          throw Error(receivedData);
+        }
+        return receivedData.json();
+      })
+      .then(cleanedData => {
+        this.setState({
+          loginData: JSON.stringify(cleanedData)
+        });
+      })
+      .catch(() => {
+        this.setState({
+          loginData: `There was a problem creating a new user`
+        });
+      });
   }
 
   toggleLogin() {
@@ -117,11 +148,14 @@ export default class Login extends Component {
             value={this.state.verifyPassword} />
           <input
             className='login-submit'
-            onClick={this.handleCreateUser}
+            onClick={this.handleCreateUser.bind(this)}
             type='submit'
             value='Create New User'
           />
         </form>
+        <div>
+          {this.state.loginData}
+        </div>
       </section>
     );
   }
