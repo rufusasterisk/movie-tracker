@@ -42,7 +42,7 @@ export const loginSuccessful = (userData) => ({
 // });
 
 
-export const tryLogin = (fetchPayloadBody) => dispatch => {
+export const tryLogin = fetchPayloadBody => dispatch => {
   dispatch(loginRequested(true));
   fetch(`http://localhost:3000/api/users`, buildFetchPayload(fetchPayloadBody))
     .then(response => {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { tryLogin } from './actions';
+import { Redirect } from 'react-router';
 
 class Login extends Component {
   constructor() {
@@ -72,6 +73,27 @@ class Login extends Component {
     });
   }
 
+  generateLoginStatus() {
+    if (this.props.loginSuccessful) {
+      return (
+        <Redirect to="/"/>
+      )
+    };
+
+    if (this.props.loginFailure) {
+      return (
+        <div>FAIL</div>
+      )
+    };
+
+    if (this.props.loginRequested) {
+      return (
+        <div>LOADING!!!</div>
+      )
+    };
+
+  }
+
   generateLoginTab() {
     return (
       <section>
@@ -94,11 +116,10 @@ class Login extends Component {
             className='login-submit'
             onClick={this.handleLogin.bind(this)}
             type='submit'
-            value='Login'
-          />
+            value='Login' />
         </form>
         <div>
-          {this.state.loginData}
+          {this.generateLoginStatus()}
         </div>
       </section>
     );
@@ -153,7 +174,6 @@ class Login extends Component {
       ? this.generateLoginTab()
       : this.generateNewUserTab();
   }
-
 }
 
 Login.propTypes = {
