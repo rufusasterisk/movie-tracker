@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { tryLogin } from './actions';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
+      email: 'b',
       name: '',
-      password: '',
+      password: 'c',
       verifyPassword: '',
       loginDisplayed: true
     };
@@ -20,13 +22,48 @@ export default class Login extends Component {
     });
   }
 
-  handleLogin() {
-    // send email and password through API to the postgres DB
-    //
+  handleLogin(event) {
+    event.preventDefault();
+    this.props.tryLogin({
+      email: this.state.email,
+      password: this.state.password});
   }
 
-  handleCreateUser() {
+  handleCreateUser(event) {
+    event.preventDefault();
+    //add pw verification code here (password length, matches pw confirmation
+    const body = {
+      email: this.state.email.toLowerCase(),
+      password: this.state.password,
+      name: this.state.name.toLowerCase()
+    };
+    const fetchParameters = {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
+    fetch('http://localhost:3000/api/users/new', fetchParameters)
+      .then(receivedData => {
+        if (receivedData.status !== 200) {
+          throw Error(receivedData);
+        }
+        return receivedData.json();
+      })
+      .then(cleanedData => {
+        this.setState({
+          loginData: JSON.stringify(cleanedData)
+        });
+      })
+      .catch(() => {
+        // fakeProps.createError = true;
+        // debugger;
+        // this.setState({
+        //   loginData: `There was a problem creating a new user`
+        // });
+      });
   }
 
   toggleLogin() {
@@ -55,11 +92,14 @@ export default class Login extends Component {
             value={this.state.password} />
           <input
             className='login-submit'
-            onClick={this.handleLogin}
+            onClick={this.handleLogin.bind(this)}
             type='submit'
             value='Login'
           />
         </form>
+        <div>
+          {this.state.loginData}
+        </div>
       </section>
     );
   }
@@ -96,11 +136,14 @@ export default class Login extends Component {
             value={this.state.verifyPassword} />
           <input
             className='login-submit'
-            onClick={this.handleCreateUser}
+            onClick={this.handleCreateUser.bind(this)}
             type='submit'
             value='Create New User'
           />
         </form>
+        <div>
+          {/* {fakeProps.createError ? 'That email is in use' : null} */}
+        </div>
       </section>
     );
   }
@@ -112,3 +155,24 @@ export default class Login extends Component {
   }
 
 }
+
+Login.propTypes = {
+  loginRequested: PropTypes.bool,
+  loginFailure: PropTypes.bool,
+  loginSuccessful: PropTypes.bool,
+  tryLogin: PropTypes.func
+};
+
+const mapStateToProps = store => ({
+  loginRequested: store.loginRequested,
+  loginFailure: store.loginFailure,
+  loginSuccessful: store.loginSuccessful
+});
+
+const mapDispatchToProps = dispatch => ({
+  tryLogin: (loginObject) => {
+    dispatch(tryLogin(loginObject));
+  }});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
