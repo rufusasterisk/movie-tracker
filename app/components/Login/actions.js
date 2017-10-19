@@ -45,9 +45,6 @@ export const loginSuccessful = (userData) => ({
 //fetchPayloadBody = {email: ****, password: ****}
 export const tryLogin = (fetchPayloadBody) => dispatch => {
   dispatch(loginRequested(true));
-  console.log(hostAddress);
-  console.log(fetchPayloadBody);
-  console.log(buildFetchPayload(fetchPayloadBody));
   fetch(`http://localhost:3000/api/users`, buildFetchPayload(fetchPayloadBody))
     .then(response => {
       if (response.status !== 200){

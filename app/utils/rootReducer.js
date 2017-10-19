@@ -3,13 +3,17 @@ import displayMoviesReducer from '../containers/movieIndex/reducer';
 import {
   loginRequested,
   loginFailure,
-  loginSuccessful } from '../components/Login/reducers';
+  loginSuccessful,
+  currentUserID,
+  currentUserName} from '../components/Login/reducers';
 
 const rootReducer = combineReducers({
   displayMoviesReducer,
   loginRequested,
   loginFailure,
-  loginSuccessful
+  loginSuccessful,
+  currentUserID,
+  currentUserName
 });
 
 export default rootReducer;

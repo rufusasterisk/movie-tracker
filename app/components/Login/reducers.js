@@ -19,7 +19,25 @@ export const loginFailure = (state = false, action) => {
 export const loginSuccessful = (state = false, action) => {
   switch (action.type) {
   case 'LOGIN_SUCCESSFUL':
-    return action.userData;
+    return true;
+  default:
+    return state;
+  }
+};
+
+export const currentUserID = (state = '', action) => {
+  switch (action.type) {
+  case 'LOGIN_SUCCESSFUL':
+    return action.userData.data.id;
+  default:
+    return state;
+  }
+};
+
+export const currentUserName = (state = '', action) => {
+  switch (action.type) {
+  case 'LOGIN_SUCCESSFUL':
+    return action.userData.data.name;
   default:
     return state;
   }
