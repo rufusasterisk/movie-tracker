@@ -42,7 +42,6 @@ export const loginSuccessful = (userData) => ({
 // });
 
 
-//fetchPayloadBody = {email: ****, password: ****}
 export const tryLogin = (fetchPayloadBody) => dispatch => {
   dispatch(loginRequested(true));
   fetch(`http://localhost:3000/api/users`, buildFetchPayload(fetchPayloadBody))
@@ -58,36 +57,8 @@ export const tryLogin = (fetchPayloadBody) => dispatch => {
       dispatch(loginSuccessful(parsedData));
     })
     .catch((error)=>{
-      console.log(error);
+      alert(error);
       dispatch(loginFailure(true));
       dispatch(loginRequested(false));
-    });//set into state)
-
-  //fetch call
-  //on success
-    //dispatch(loginSuccessful(fetch response object))
-  //on failure
-    //dispatch(loginFailed())
+    });
 };
-
-
-// Few problems to solve
-// 1) When are actions triggered? (How much behavior lives in the component)
-  // When a login is successful
-// 2) What actions are triggered?
-  // update logged in user in Store
-
-
-//sign in action - Store needs to know logged in user
-
-// We have to manage a login through an API in a react-redux project with Thunk middleware
-// The login should allow people to login or create a new user by interacting with an api
-// Where should the API communication happen?
-// Should it happen inside of the Component?
-// The component is currently stateful to handle text input fields.
-// Should it happen via middleware actions?
-
-// We're having difficulty deciding what is the best practice - the data we want in
-// store is based on a successful login (What user ID is logged in) - Should the
-// data we don't need in store live in store anyway, or should the Component trigger
-// an action on a successful login?

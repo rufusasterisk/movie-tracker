@@ -24,26 +24,9 @@ class Login extends Component {
 
   handleLogin(event) {
     event.preventDefault();
-    this.props.tryLogin({email: this.state.email, password: this.state.password});
-    // const body = {
-    //   email: this.state.email.toLowerCase(),
-    //   password: this.state.password
-    // };
-    // const fetchParameters = {
-    //   method: 'POST',
-    //   body: JSON.stringify(body),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // };
-    // fetch('http://localhost:3000/api/users', fetchParameters)
-    //   .then(receivedData => receivedData.json())
-    //   .then(cleanedData => {
-    //     this.setState({
-    //       loginData: JSON.stringify(cleanedData)
-    //     });
-    //     //trigger Action to update logged in user in Store
-    //   });
+    this.props.tryLogin({
+      email: this.state.email,
+      password: this.state.password});
   }
 
   handleCreateUser(event) {
@@ -110,7 +93,6 @@ class Login extends Component {
           <input
             className='login-submit'
             onClick={this.handleLogin.bind(this)}
-            // onClick={event => { event.preventDefault(); this.props.tryLogin(); }}
             type='submit'
             value='Login'
           />
