@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
-export default class Login extends Component {
-  constructor() {
+class Login extends Component {
+  constructor( { loginRequested, loginFailure, loginSuccessful } ) {
     super();
     this.state = {
       email: '',
       name: '',
       password: '',
       verifyPassword: '',
-      loginDisplayed: true,
-      loginData: 'No Data (yet)'
+      loginDisplayed: true
+    //   loginData: 'No Data (yet)'
     };
     this.toggleLogin = this.toggleLogin.bind(this);
   }
@@ -40,6 +42,7 @@ export default class Login extends Component {
         this.setState({
           loginData: JSON.stringify(cleanedData)
         });
+        //trigger Action to update logged in user in Store
       });
   }
 
@@ -72,9 +75,11 @@ export default class Login extends Component {
         });
       })
       .catch(() => {
-        this.setState({
-          loginData: `There was a problem creating a new user`
-        });
+        fakeProps.createError = true;
+        debugger;
+        // this.setState({
+        //   loginData: `There was a problem creating a new user`
+        // });
       });
   }
 
@@ -154,7 +159,7 @@ export default class Login extends Component {
           />
         </form>
         <div>
-          {this.state.loginData}
+          {fakeProps.createError ? 'That email is in use' : null}
         </div>
       </section>
     );
@@ -167,3 +172,5 @@ export default class Login extends Component {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
