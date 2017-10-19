@@ -9,7 +9,8 @@ export default class Login extends Component {
       name: '',
       password: '',
       verifyPassword: '',
-      loginDisplayed: true
+      loginDisplayed: true,
+      loginData: 'No Data (yet)'
     };
     this.toggleLogin = this.toggleLogin.bind(this);
   }
@@ -20,9 +21,26 @@ export default class Login extends Component {
     });
   }
 
-  handleLogin() {
-    // send email and password through API to the postgres DB
-    //
+  handleLogin(event) {
+    event.preventDefault();
+    const body = {
+      email: this.state.email.toLowerCase(),
+      password: this.state.password.toLowerCase()
+    };
+    const fetchParameters = {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    fetch('http://localhost:3000/api/users', fetchParameters)
+      .then(receivedData => receivedData.json())
+      .then(cleanedData => {
+        this.setState({
+          loginData: JSON.stringify(cleanedData)
+        });
+      });
   }
 
   handleCreateUser() {
@@ -55,11 +73,14 @@ export default class Login extends Component {
             value={this.state.password} />
           <input
             className='login-submit'
-            onClick={this.handleLogin}
+            onClick={this.handleLogin.bind(this)}
             type='submit'
             value='Login'
           />
         </form>
+        <div>
+          {this.state.loginData}
+        </div>
       </section>
     );
   }
