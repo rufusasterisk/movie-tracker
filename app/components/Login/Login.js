@@ -14,7 +14,6 @@ class Login extends Component {
       verifyPassword: '',
       loginDisplayed: true
     };
-    this.toggleLogin = this.toggleLogin.bind(this);
   }
 
   handleChange(key, event) {
@@ -23,14 +22,14 @@ class Login extends Component {
     });
   }
 
-  handleLogin(event) {
+  handleLogin = (event) => {
     event.preventDefault();
     this.props.tryLogin({
       email: this.state.email,
       password: this.state.password});
   }
 
-  handleCreateUser(event) {
+  handleCreateUser = (event) => {
     event.preventDefault();
     this.props.createUser({
       email: this.state.email.toLowerCase(),
@@ -39,7 +38,7 @@ class Login extends Component {
     });
   }
 
-  toggleLogin() {
+  toggleLogin = () => {
     this.setState({
       loginDisplayed: !this.state.loginDisplayed
     });
@@ -86,7 +85,7 @@ class Login extends Component {
             value={this.state.password} />
           <input
             className='login-submit'
-            onClick={this.handleLogin.bind(this)}
+            onClick={this.handleLogin}
             type='submit'
             value='Login' />
         </form>
@@ -129,7 +128,7 @@ class Login extends Component {
             value={this.state.verifyPassword} />
           <input
             className='login-submit'
-            onClick={this.handleCreateUser.bind(this)}
+            onClick={this.handleCreateUser}
             type='submit'
             value='Create New User'
           />
