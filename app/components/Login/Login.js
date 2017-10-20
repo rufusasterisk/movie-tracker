@@ -85,7 +85,7 @@ class Login extends Component {
             value={this.state.password} />
           <input
             className='login-submit'
-            onClick={this.handleLogin.bind(this)}
+            onClick={this.handleLogin}
             type='submit'
             value='Login' />
         </form>
