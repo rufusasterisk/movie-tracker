@@ -5,7 +5,10 @@ import {
   loginFailure,
   loginSuccessful,
   currentUserID,
-  currentUserName} from '../components/Login/reducers';
+  currentUserName,
+  createUserRequested,
+  createUserFailure,
+  createUserSuccess } from '../components/Login/reducers';
 
 const rootReducer = combineReducers({
   displayMoviesReducer,
@@ -13,7 +16,10 @@ const rootReducer = combineReducers({
   loginFailure,
   loginSuccessful,
   currentUserID,
-  currentUserName
+  currentUserName,
+  createUserRequested,
+  createUserFailure,
+  createUserSuccess
 });
 
 export default rootReducer;

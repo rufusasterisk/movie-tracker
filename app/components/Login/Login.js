@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { tryLogin } from './actions';
+import { tryLogin, createUser } from './actions';
+import { Redirect } from 'react-router';
 
 class Login extends Component {
   constructor() {
@@ -31,45 +32,38 @@ class Login extends Component {
 
   handleCreateUser(event) {
     event.preventDefault();
-    //add pw verification code here (password length, matches pw confirmation
-    const body = {
+    this.props.createUser({
       email: this.state.email.toLowerCase(),
       password: this.state.password,
       name: this.state.name.toLowerCase()
-    };
-    const fetchParameters = {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
-    fetch('http://localhost:3000/api/users/new', fetchParameters)
-      .then(receivedData => {
-        if (receivedData.status !== 200) {
-          throw Error(receivedData);
-        }
-        return receivedData.json();
-      })
-      .then(cleanedData => {
-        this.setState({
-          loginData: JSON.stringify(cleanedData)
-        });
-      })
-      .catch(() => {
-        // fakeProps.createError = true;
-        // debugger;
-        // this.setState({
-        //   loginData: `There was a problem creating a new user`
-        // });
-      });
+    });
   }
 
   toggleLogin() {
     this.setState({
       loginDisplayed: !this.state.loginDisplayed
     });
+  }
+
+  generateLoginStatus() {
+    if (this.props.loginSuccessful) {
+      return (
+        <Redirect to="/"/>
+      )
+    };
+
+    if (this.props.loginFailure) {
+      return (
+        <div>Email and Password do not match</div>
+      )
+    };
+
+    if (this.props.loginRequested) {
+      return (
+        <div>LOADING!!!</div>
+      )
+    };
+
   }
 
   generateLoginTab() {
@@ -82,23 +76,22 @@ class Login extends Component {
             className='login-email'
             onChange={this.handleChange.bind(this, 'email')}
             placeholder='Email'
-            type='text'
+            type='email'
             value={this.state.email} />
           <input
             className='login-password'
             onChange={this.handleChange.bind(this, 'password')}
             placeholder='Password'
-            type='text'
+            type='password'
             value={this.state.password} />
           <input
             className='login-submit'
             onClick={this.handleLogin.bind(this)}
             type='submit'
-            value='Login'
-          />
+            value='Login' />
         </form>
         <div>
-          {this.state.loginData}
+          {this.generateLoginStatus()}
         </div>
       </section>
     );
@@ -153,7 +146,6 @@ class Login extends Component {
       ? this.generateLoginTab()
       : this.generateNewUserTab();
   }
-
 }
 
 Login.propTypes = {
@@ -172,7 +164,10 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   tryLogin: (loginObject) => {
     dispatch(tryLogin(loginObject));
-  }});
-
+  },
+  createUser: (createUserObject)  => {
+    dispatch(createUser(createUserObject))
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

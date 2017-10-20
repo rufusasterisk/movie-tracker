@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { grabMovies, displayMovies } from './containers/movieIndex/actions';
 import MovieIndex from './containers/movieIndex/MovieIndex';
+import User from './components/User/User';
 import getRecentMovies from './utils/getRecentMovies';
 import {dispatch} from 'redux';
 import PropTypes from 'prop-types';
@@ -13,16 +14,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // getRecentMovies().then(movieArray => this.props.storeMovies(movieArray))
     this.props.handleFetch();
   }
 
   render() {
     return (
       <div>
-        <h1>Movie Watcher</h1>
+        <nav>
+          <h1>Movie Tracker</h1>
+          <User />
+        </nav>
         <MovieIndex />
-        <h1>Movie Watcher</h1>
       </div>
     );
   }
@@ -33,7 +35,6 @@ App.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  // storeMovies: (array) => dispatch(displayMovies(array))
   handleFetch: () => dispatch(grabMovies())
 });
 

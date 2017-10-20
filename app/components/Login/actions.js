@@ -29,20 +29,41 @@ export const loginSuccessful = (userData) => ({
   userData
 });
 
-// export const createUserRequested = () => ({
-//   type: 'CREATE_USER_REQUESTED'
-// });
-//
-// export const createUserFailure = () => ({
-//   type: 'CREATE_USER_FAILURE'
-// });
-//
-// export const createUserSuccess = () => ({
-//   type: 'CREATE_USER_SUCCESS'
-// });
+export const createUserRequested = (status) => ({
+  type: 'CREATE_USER_REQUESTED',
+  status
+});
 
+export const createUserFailure = (status) => ({
+  type: 'CREATE_USER_FAILURE',
+  status
+});
 
-export const tryLogin = (fetchPayloadBody) => dispatch => {
+export const createUserSuccess = (status) => ({
+  type: 'CREATE_USER_SUCCESS',
+  status
+});
+
+export const createUser = fetchPayloadBody => dispatch => {
+  dispatch(createUserRequested(true));
+  fetch('http://localhost:3000/api/users/new', buildFetchPayload(fetchPayloadBody))
+    .then(response => {
+      if (response.status !== 200) {
+        throw Error(response);
+      }
+      return response.json();
+    })
+    .then(parsedData => {
+      dispatch(createUserRequested(false));
+      dispatch(createUserSuccess(true));
+    })
+    .catch(() => {
+      dispatch(createUserRequested(false));
+      dispatch(createUserFailure(true));
+    });
+};
+
+export const tryLogin = fetchPayloadBody => dispatch => {
   dispatch(loginRequested(true));
   fetch(`http://localhost:3000/api/users`, buildFetchPayload(fetchPayloadBody))
     .then(response => {
@@ -57,7 +78,6 @@ export const tryLogin = (fetchPayloadBody) => dispatch => {
       dispatch(loginSuccessful(parsedData));
     })
     .catch((error)=>{
-      alert(error);
       dispatch(loginFailure(true));
       dispatch(loginRequested(false));
     });
