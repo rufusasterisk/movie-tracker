@@ -54,7 +54,7 @@ class Login extends Component {
 
     if (this.props.loginFailure) {
       return (
-        <div>FAIL</div>
+        <div>Email and Password do not match</div>
       )
     };
 
@@ -76,13 +76,13 @@ class Login extends Component {
             className='login-email'
             onChange={this.handleChange.bind(this, 'email')}
             placeholder='Email'
-            type='text'
+            type='email'
             value={this.state.email} />
           <input
             className='login-password'
             onChange={this.handleChange.bind(this, 'password')}
             placeholder='Password'
-            type='text'
+            type='password'
             value={this.state.password} />
           <input
             className='login-submit'
