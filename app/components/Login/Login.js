@@ -8,9 +8,9 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: 'b',
+      email: '',
       name: '',
-      password: 'c',
+      password: '',
       verifyPassword: '',
       loginDisplayed: true
     };
