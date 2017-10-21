@@ -24,7 +24,8 @@ class MovieIndex extends Component {
         poster={movie.poster}
         backdrop={movie.backdrop}
         movieID={movie.id}
-        release={movie.release}/>
+        release={movie.release}
+        isFavorited={false}/>
     ));
   }
 

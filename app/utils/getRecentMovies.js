@@ -16,7 +16,8 @@ const cleanMovieData = rawMovieData => {
       release: movie.release_date,
       description: movie.overview,
       genreIds: movie.genre_ids,
-      backdrop: movie.backdrop_path
+      backdrop: movie.backdrop_path,
+      isFavorited: false
     };
   });
 };

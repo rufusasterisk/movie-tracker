@@ -7,7 +7,8 @@ const mapStateToProps = store => ({
   favoritesCounter: store.favoritesCounter,
   movieArray: store.displayMoviesReducer,
   favorites: store.favorites,
-  currentUserID: store.currentUserID
+  currentUserID: store.currentUserID,
+  isFavorited: store.isFavorited
 });
 
 const mapDispatchToProps = dispatch => ({

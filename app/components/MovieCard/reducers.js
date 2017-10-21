@@ -13,17 +13,22 @@ export const favoritesCounter = (state = 0, action) => {
   }
 }
 
-export const favorites = (state = [], action) => {
+export const favorites = (state = new Set(), action) => {
   switch (action.type) {
     case 'ADD_TO_FAVORITES':
-      const idMatch = action.data.movieID;
-      const updatedFavorites = state.map(movie => {
-        if (movie.movieID === idMatch) {
-          movie.isFavorited = !movie.isFavorited;
-        }
-        return movie;
-      })
-      return updatedFavorites;
+      return state.add(action.data.movie_id);
+
+      // const idMatch = action.data.movie_id;
+      // const movies = state;
+      // console.log('store:', movies);
+      // const updatedFavorites = movies.map(movie => {
+      //   console.log('we are in MAP');
+      //   if (movie.movieID === idMatch) {
+      //     movie.isFavorited = !movie.isFavorited;
+      //   }
+      //   return movie;
+      // })
+
     case 'RESET_FAVORITES':
       return state.map(movie=> {
         movie.isFavorited = false;
