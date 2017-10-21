@@ -7,9 +7,12 @@
     "npm": "3.10.x"
   },
   "scripts": {
-    "build": "webpack --config ./webpack.config.js",
+    "build-css": "node-sass-chokidar app/ -o app/",
+    "watch-css": "npm run build-css && node-sass-chokidar app/ -o app/ --watch --recursive",
     "dev-server": "webpack-dev-server --hot --inline --content-base --history-api-fallback",
-    "start": "node server.js",
+    "start-js": "node server.js start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && webpack --config ./webpack.config.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -24,6 +27,8 @@
     "express": "^4.14.0",
     "express-cors": "0.0.3",
     "history": "^4.6.3",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.1",
     "pg-promise": "^3.2.3",
     "raf": "^3.4.0",
     "react": "^16.0.0",
