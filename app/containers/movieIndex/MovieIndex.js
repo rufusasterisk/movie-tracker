@@ -47,11 +47,8 @@ MovieIndex.propTypes = {
   movieArray: PropTypes.array
 };
 
-
 const mapStateToProps = store => ({
   movieArray: store.displayMoviesReducer
-
 });
-
 
 export default connect(mapStateToProps, undefined)(MovieIndex);

@@ -12,7 +12,6 @@ const MovieCard = (props) => {
     } else {
       console.log('in else blcok: ');
       addToFavorites();
-      //!movie.isFavorited ? addToFavorites() : removeFromFavorites()
     }
   }
 
@@ -34,7 +33,6 @@ const MovieCard = (props) => {
     decreaseFavoriteCount();
     //call a util file to run the fetch on our API
     //then call removeFromFavorites in actions,
-    //set.delete()
   }
 
   return (
@@ -58,6 +56,5 @@ MovieCard.propTypes = {
   poster: PropTypes.string,
   backdrop: PropTypes.string
 };
-
 
 export default MovieCard;

@@ -18,17 +18,6 @@ export const favorites = (state = new Set([335984, 381283]), action) => {
     case 'ADD_TO_FAVORITES':
       return state.add(action.data.movie_id);
 
-      // const idMatch = action.data.movie_id;
-      // const movies = state;
-      // console.log('store:', movies);
-      // const updatedFavorites = movies.map(movie => {
-      //   console.log('we are in MAP');
-      //   if (movie.movieID === idMatch) {
-      //     movie.isFavorited = !movie.isFavorited;
-      //   }
-      //   return movie;
-      // })
-
     case 'RESET_FAVORITES':
       return state.map(movie=> {
         movie.isFavorited = false;

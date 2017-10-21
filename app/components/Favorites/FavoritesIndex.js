@@ -13,7 +13,6 @@ class FavoritesIndex extends Component {
   }
 
   generateFavoriteMovies() {
-    //console.log('in generateFavoriteMovies');
     const { favorites, movieArray } = this.props;
     const favoritesArray = [...favorites];
 
@@ -35,7 +34,6 @@ class FavoritesIndex extends Component {
     })
 
     return movieData.map(movie => {
-      console.log('movieData map', movie[0].id);
       return <MovieCardContainer
           key={`FaveID-${movie[0].id}`}
           title={movie[0].title}
@@ -47,20 +45,6 @@ class FavoritesIndex extends Component {
           release={movie[0].release}
           isFavorited={true} />
     });
-    // return favoriteMovies.map(movie => (
-    // //  const uniqueMovieID = Object.keys(movie);
-    //   //console.log('movie inside map:', movie);
-    //   <MovieCardContainer
-    //     key={`CardID-${movie.id}`}
-    //     title={movie.title}
-    //     description={movie.description}
-    //     voteAvg={movie.voteAvg}
-    //     poster={movie.poster}
-    //     backdrop={movie.backdrop}
-    //     movieID={movie.id}
-    //     release={movie.release}
-    //     isFavorited={true} />
-    //   ));
   }
 
   render() {
@@ -68,7 +52,6 @@ class FavoritesIndex extends Component {
     const mappedFavoriteCards = movieArray.length
       ? this.generateCards()
       : null;
-    //const mappedFavoriteCards = this.generateCards();
 
     return (
       <div>
