@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { grabMovies, displayMovies } from './containers/movieIndex/actions';
 import MovieIndex from './containers/movieIndex/MovieIndex';
+import FavoritesIndexContainer from './components/Favorites/FavoritesIndexContainer';
 import User from './components/User/User';
 import getRecentMovies from './utils/getRecentMovies';
 import {dispatch} from 'redux';
@@ -24,6 +25,7 @@ class App extends Component {
           <h1>Movie Tracker</h1>
           <User />
         </nav>
+        <FavoritesIndexContainer />
         <MovieIndex />
       </div>
     );

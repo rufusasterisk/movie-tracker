@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import displayMoviesReducer from '../containers/movieIndex/reducer';
+import { favoritesCounter, favorites } from '../components/MovieCard/reducers';
 import {
   loginRequested,
   loginFailure,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   currentUserName,
   createUserRequested,
   createUserFailure,
-  createUserSuccess
-});
+  createUserSuccess,
+  favoritesCounter,
+  favorites });
 
 export default rootReducer;
