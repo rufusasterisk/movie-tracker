@@ -1,4 +1,4 @@
-export const addToFavorites = (data) => ({
+export const addCardToFavorites = (data) => ({
   type: 'ADD_TO_FAVORITES',
   data
 })
@@ -22,15 +22,33 @@ export const setFavoriteCount = (data) => ({
   data
 })
 
-export const increaseFavoriteCount = () => ({
-  type: 'INCREASE_FAVORITE_COUNT'
+export const increaseFavoriteCount = (state) => ({
+  type: 'INCREASE_FAVORITE_COUNT',
+  state
 })
 
-export const decreaseFavoriteCount = () => ({
-  type: 'DECREASE_FAVORITE_COUNT'
+export const decreaseFavoriteCount = (state) => ({
+  type: 'DECREASE_FAVORITE_COUNT',
+  state
 })
 
 // export const fetchFavorites = (data) => ({
 //   type: 'FETCH_FAVORITES',
 //   data
 // })
+
+const buildFetchPayload = body => ({
+  body: JSON.stringify(body),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST'
+});
+
+export const addToFavorites = fetchPayloadBody => {
+  fetch(`http://localhost:3000/api/users/favorites/new`, buildFetchPayload(fetchPayloadBody))
+    .then(response => response.json())
+    .then(parsedData => {
+      dispatch(addCardToFavorites(parsedData.id))
+    })
+}

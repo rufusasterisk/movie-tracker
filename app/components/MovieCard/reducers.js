@@ -1,4 +1,4 @@
-export const favoritesCounter= (state = 0, action) => {
+export const favoritesCounter = (state = 0, action) => {
   switch(action.type) {
     case 'SET_FAVORITE_COUNT':
       return action.data;
