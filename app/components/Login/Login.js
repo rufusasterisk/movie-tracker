@@ -130,8 +130,7 @@ class Login extends Component {
             className='login-submit'
             onClick={this.handleCreateUser}
             type='submit'
-            value='Create New User'
-          />
+            value='Create New User' />
         </form>
         <div>
           {/* {fakeProps.createError ? 'That email is in use' : null} */}
