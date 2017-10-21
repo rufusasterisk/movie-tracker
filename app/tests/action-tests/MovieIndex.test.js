@@ -1,0 +1,15 @@
+import MovieIndex from '../../../containers/movieIndex/MovieIndex';
+import * as actions from '../../../containers/movieIndex/actions';
+
+describe(`MOVIE INDEX`, () => {
+  it(`should create an action to display movies`, () => {
+    const movieArray = [{name: 'Wall-E'}, {name: 'Mulan'}, {name: 'Up'}];
+    const expectedAction = {
+      type: `DISPLAY_MOVIES`,
+      movieArray
+    }
+    const expectation = actions.displayMovies(movieArray);
+
+    expect(expectation).toEqual(expectedAction);
+  });
+});
