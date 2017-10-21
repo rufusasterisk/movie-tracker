@@ -7,8 +7,4 @@ const mapStateToProps = store => ({
   movieArray: store.displayMoviesReducer
 });
 
-const mapDispatchToProps = dispatch => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesIndex);
+export default connect(mapStateToProps, undefined)(FavoritesIndex);

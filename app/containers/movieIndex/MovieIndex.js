@@ -15,7 +15,7 @@ class MovieIndex extends Component {
   }
 
   generateCards(movieArray) {
-    return movieArray.map( movie => (
+    return movieArray.map(movie => (
       <MovieCardContainer
         key={`CardID-${movie.id}`}
         title={movie.title}
@@ -25,7 +25,7 @@ class MovieIndex extends Component {
         backdrop={movie.backdrop}
         movieID={movie.id}
         release={movie.release}
-        isFavorited={false}/>
+        isFavorited={false} />
     ));
   }
 

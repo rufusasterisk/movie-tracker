@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
-// import { addToFavorites } from '../../utils/favorites';
 
 const MovieCard = (props) => {
   const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, isFavorited } = props;
@@ -29,7 +28,6 @@ const MovieCard = (props) => {
       title,
       isFavorited: true
     })
-  //set.add()
   }
 
   const removeFromFavorites = () => {
