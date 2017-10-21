@@ -1,17 +1,11 @@
 import hostAddress from '../../utils/hostAddress';
 
-const buildFetchPayload = (body) => ({
+export const buildFetchPayload = (body) => ({
   body: JSON.stringify(body),
   headers: {
     'Content-Type': 'application/json'
   },
   method: 'POST'
-});
-
-export const userLogin = (username, password) => ({
-  type: 'USER_LOGIN',
-  username,
-  password
 });
 
 export const loginRequested = (status) => ({
