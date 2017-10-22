@@ -32,9 +32,15 @@ main {
 .see-all-movies-btn,
 .see-favorites-btn {
   border: none;
-  padding: 5px;
+  padding: 8px 15px;
   background-color: #EB8938;
   margin: 10px;
+  font-size: 120%;
+}
+
+.see-all-movies-btn:hover,
+.see-favorites-btn:hover {
+  background-color: #CE7831;
 }
 
 #main {

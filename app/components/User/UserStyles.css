@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 .link-to-log-in {
   border: none;
-  padding: 5px;
+  padding: 8px 15px;
   background-color: #EB8938;
   margin: 10px;
+  font-size: 120%;
   font-family: Roboto; }
