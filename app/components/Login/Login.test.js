@@ -16,5 +16,13 @@ describe(`Login control component`, () => {
     expect(wrapper.exists()).toBe(true);
   });
 
+  it(`should mount`, () => {
+    const initialState = {};
+    const store = mockStore(initialState);
+    const wrapper = mount(<Login store={store}/>);
+
+    expect(wrapper.exists()).toBe(true);
+
+  });
 
 });
