@@ -53,7 +53,7 @@ class Login extends Component {
 
     if (this.props.loginFailure) {
       return (
-        <div>Email and Password do not match</div>
+        <div className="no-match">Email and Password do not match</div>
       )
     };
 
@@ -67,9 +67,13 @@ class Login extends Component {
 
   generateLoginTab() {
     return (
-      <section>
-        <button disabled>Login</button>
-        <button onClick={this.toggleLogin}>Create</button>
+      <section className="login-page">
+        <button
+          className="pick-a-tab disabled"
+          disabled>Login</button>
+        <button
+          className="pick-a-tab"
+          onClick={this.toggleLogin}>Create</button>
         <form>
           <input
             className='login-email'
@@ -98,9 +102,12 @@ class Login extends Component {
 
   generateNewUserTab() {
     return (
-      <section>
-        <button onClick={this.toggleLogin}>Login</button>
-        <button disabled>Create</button>
+      <section className="login-page">
+        <button
+          className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
+        <button
+          className="pick-a-tab disabled"
+          disabled>Create</button>
         <form>
           <input
             className='login-name'

@@ -1,0 +1,48 @@
+.login-page {
+  border: 1px solid red;
+  width: 35%;
+  margin: 0 auto;
+}
+
+.pick-a-tab {
+  border: none;
+  background-color: orange;
+  margin: 10px;
+  color: black;
+  padding: 10px;
+}
+
+.pick-a-tab:hover {
+  background-color: maroon;
+}
+
+.disabled {
+  background-color: grey;
+}
+
+.disabled:hover {
+  background-color: grey;
+}
+
+.login-name,
+.login-email,
+.login-password,
+.login-verify-password {
+  padding: 5px;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+
+}
+
+.login-submit {
+  padding: 5px;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.no-match {
+
+}

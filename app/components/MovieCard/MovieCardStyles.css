@@ -1,6 +1,6 @@
 .movie-card {
   position: relative;
-  margin: 15px;
+  margin: 12px;
   box-shadow: 5px 5px 5px #101010; }
 
 .movie-card:hover {
