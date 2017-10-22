@@ -14,9 +14,17 @@
 }
 
 .favorite-btn {
-  background-color: red;
-  border: none;
+  background-image: url('http://localhost:3000/assets/empty-heart.svg');
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.favorite-btn:hover {
+    background-image: url('http://localhost:3000/assets/full-heart.svg');
 }

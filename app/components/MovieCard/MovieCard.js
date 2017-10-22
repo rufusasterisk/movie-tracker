@@ -38,7 +38,7 @@ const MovieCard = (props) => {
   return (
     <div className="movie-card">
       <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
-      <button className="favorite-btn" onClick={checkIfFavorited}>FAVE</button>
+      <div className="favorite-btn" onClick={checkIfFavorited}></div>
     </div>
   );
 };
