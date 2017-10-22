@@ -7,10 +7,9 @@ const MovieCard = (props) => {
 
   const checkIfFavorited = () => {
     if (currentUserID === '') {
-      console.log('in no user logged in IF block');
+      alert('You have to have an account to favorite a movie!')
       //re-route to login page
     } else {
-      console.log('in else blcok: ');
       addToFavorites();
     }
   }

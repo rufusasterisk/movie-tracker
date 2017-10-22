@@ -7,6 +7,8 @@ import User from './components/User/User';
 import getRecentMovies from './utils/getRecentMovies';
 import { dispatch } from 'redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import styles from './main.scss';
 
 class App extends Component {
@@ -19,6 +21,14 @@ class App extends Component {
     this.props.handleFetch();
   }
 
+  routeToFavorites() {
+    console.log('are we routing');
+    return <Route path="/favorites" component={FavoritesIndexContainer} />
+  }
+
+// when they click on the Favorites button, I want to :
+// {/* <Route path="/favorites" component={FavoritesIndexContainer} /> */}
+
   render() {
     return (
       <div>
@@ -26,14 +36,15 @@ class App extends Component {
           <h1 className="app-title">Movie Tracker</h1>
           <section className="nav-btns">
             <button className="see-all-movies-btn">All Movies</button>
-            <button className="see-favorites-btn">Favorites</button>
+            <Link
+              className="see-favorites-btn"
+              to="/favorites">Favorites </Link>
             <User />
         </section>
         </nav>
 
         <main>
           <article className="card-index">
-            {/* <FavoritesIndexContainer /> */}
             <MovieIndex />
           </article>
         </main>
@@ -44,10 +55,15 @@ class App extends Component {
 
 App.propTypes = {
   handleFetch: PropTypes.func
+  //favorites: PropTypes.set
 };
+
+const mapStateToProps = store => ({
+  favorites: store.favorites
+})
 
 const mapDispatchToProps = dispatch => ({
   handleFetch: () => dispatch(grabMovies())
 });
 
-export default connect(undefined, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
