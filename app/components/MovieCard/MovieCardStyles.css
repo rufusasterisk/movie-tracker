@@ -1,0 +1,13 @@
+.movie-card {
+  position: relative; }
+
+.poster-img {
+  height: 350px;
+  width: auto; }
+
+.favorite-btn {
+  background-color: red;
+  border: none;
+  position: absolute;
+  bottom: 20px;
+  right: 20px; }

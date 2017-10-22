@@ -37,17 +37,19 @@ const MovieCard = (props) => {
 
   return (
     <div className="movie-card">
-      <img src={`http://image.tmdb.org/t/p/w500${poster}`} />
-      <h3>{title}</h3>
-      <ul>
-        <li><button onClick={checkIfFavorited}>FAVE</button></li>
-        <li>{description}</li>
-        <li>{voteAvg}</li>
-      </ul>
-      <img src={`http://image.tmdb.org/t/p/w1920${backdrop}`} />
+      <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
+      <button className="favorite-btn" onClick={checkIfFavorited}>FAVE</button>
     </div>
   );
 };
+
+// {/* <h3>{title}</h3>
+// <ul>
+// <li><button onClick={checkIfFavorited}>FAVE</button></li>
+// <li>{description}</li>
+// <li>{voteAvg}</li>
+// </ul> */}
+// {/* <img src={`http://image.tmdb.org/t/p/w1920${backdrop}`} /> */}
 
 MovieCard.propTypes = {
   title: PropTypes.string,

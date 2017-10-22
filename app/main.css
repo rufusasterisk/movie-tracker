@@ -1,7 +1,9 @@
-#main h1 {
-  background-color: blue;
-}
+@import url(./App.css);
+.poster-img {
+  height: 300px;
+  width: auto; }
 
-#main {
-  text-align: center;
-}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }

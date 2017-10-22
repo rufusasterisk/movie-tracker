@@ -1,3 +1,7 @@
+main {
+  display: flex;
+  flex-direction: row; }
+
 #main h1 {
   background-color: blue; }
 
