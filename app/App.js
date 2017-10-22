@@ -21,14 +21,6 @@ class App extends Component {
     this.props.handleFetch();
   }
 
-  routeToFavorites() {
-    console.log('are we routing');
-    return <Route path="/favorites" component={FavoritesIndexContainer} />
-  }
-
-// when they click on the Favorites button, I want to :
-// {/* <Route path="/favorites" component={FavoritesIndexContainer} /> */}
-
   render() {
     return (
       <div>

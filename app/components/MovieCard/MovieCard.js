@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as actions from './actions';
 
 const MovieCard = (props) => {
-  const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, isFavorited } = props;
+  const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, movieArray , favorites } = props;
 
   const checkIfFavorited = () => {
     if (currentUserID === '') {
@@ -11,6 +11,15 @@ const MovieCard = (props) => {
       //re-route to login page
     } else {
       addToFavorites();
+      const findNewFavorite = movieArray.find(movie => {
+        return movieID === movie.id;
+      })
+      const favoritedIndex = movieArray.indexOf(findNewFavorite);
+      const newMovieArray = movieArray;
+      newMovieArray[favoritedIndex].isFavorited = !movieArray[favoritedIndex].isFavorited;
+      console.log(newMovieArray);
+      //how do we send this newMovieArray up to store?!?!?!?!
+      
     }
   }
 

@@ -30,3 +30,12 @@ export const favorites = (state = new Set([440021, 381283]), action) => {
       return state;
   }
 }
+
+export const updateIsFavorited = (state = [], action) => {
+  switch (action.type) {
+    case 'UPDATE_IS_FAVORITED':
+      return action.data;
+    default:
+      return state;
+  }
+}
