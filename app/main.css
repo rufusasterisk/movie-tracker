@@ -1,7 +1,9 @@
-#main h1 {
-  background-color: blue;
-}
-
-#main {
-  text-align: center;
-}
+@import url(./App.css);
+@import url(./components/MovieCard/MovieCardStyles.css);
+@import url(./containers/movieIndex/MovieIndexStyles.css);
+@import url(./components/User/UserStyles.css);
+@import url(./components/Login/LoginStyles.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }

@@ -20,9 +20,9 @@ const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
 
   const generateLoginMenu = () => {
     return (
-      <article>
+      <button className="link-to-log-in">
         <Link to="/login">Log In</Link>
-      </article>
+      </button>
     )
   }
 

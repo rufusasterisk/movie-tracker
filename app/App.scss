@@ -1,5 +1,47 @@
-#main h1 {
-  background-color: blue;
+@import url(https://fonts.googleapis.com/css?family=Monoton);
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: #1A1A1A;
+}
+
+.nav-bar {
+  background-color: black;
+  background-image: linear-gradient(black, #1A1A1A);
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-title {
+  color: #EB9B29;
+  padding: 30px;
+  font-size: 320%;
+  font-family: Monoton, sans-serif;
+  letter-spacing: 3px;
+}
+
+.nav-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 15px 30px 15px 10px;
+}
+
+.see-all-movies-btn,
+.see-favorites-btn {
+  border-radius: 2px;
+  border: none;
+  padding: 8px 15px;
+  background-color: #EB9B29;
+  margin: 10px;
+  font-size: 120%;
+}
+
+.see-all-movies-btn:hover,
+.see-favorites-btn:hover {
+  background-color: #e48227;
 }
 
 #main {

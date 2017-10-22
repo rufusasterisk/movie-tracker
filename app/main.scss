@@ -1,0 +1,11 @@
+@import './App.css';
+@import './components/MovieCard/MovieCardStyles.css';
+@import './containers/movieIndex/MovieIndexStyles.css';
+@import './components/User/UserStyles.css';
+@import './components/Login/LoginStyles.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

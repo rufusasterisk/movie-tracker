@@ -1,0 +1,30 @@
+.movie-card {
+  position: relative;
+  margin: 12px;
+  box-shadow: 5px 5px 5px #101010;
+}
+
+.movie-card:hover {
+  box-shadow: 5px 5px 10px #CE7831;
+}
+
+.poster-img {
+  height: 350px;
+  width: auto;
+}
+
+.favorite-btn {
+  background-image: url('http://localhost:3000/assets/empty-heart.svg');
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.favorite-btn:hover {
+    background-image: url('http://localhost:3000/assets/full-heart.svg');
+}

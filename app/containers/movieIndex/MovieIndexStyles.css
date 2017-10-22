@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.current-title {
+  text-align: left;
+  padding: 30px;
+  color: #fff;
+  font-family: Roboto; }
+
+.movie-index {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around; }

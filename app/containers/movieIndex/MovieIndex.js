@@ -36,8 +36,11 @@ class MovieIndex extends Component {
       : null;
 
     return (
-      <div>
-        {mappedMovieCards}
+      <div className="movie-index-container">
+        <h2 className="current-title">All Movies</h2>
+        <section className="movie-index">
+          {mappedMovieCards}
+        </section>
       </div>
     );
   }
