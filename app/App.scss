@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Monoton);
+
 main {
   display: flex;
   flex-direction: row;
@@ -12,10 +14,13 @@ main {
 }
 
 .app-title {
-  color: #fff;
+  color: #EB8938;
   padding: 30px;
-  font-size: 200%;
+  font-size: 320%;
+  font-family: Monoton, sans-serif;
+  letter-spacing: 3px;
 }
+
 .nav-btns {
   display: flex;
   flex-direction: row;
@@ -28,12 +33,8 @@ main {
 .see-favorites-btn {
   border: none;
   padding: 5px;
-  background-color: #E36C09;
+  background-color: #EB8938;
   margin: 10px;
-}
-
-.see-favorites-btn {
-
 }
 
 #main {

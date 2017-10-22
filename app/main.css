@@ -1,8 +1,7 @@
 @import url(./App.css);
-.poster-img {
-  height: 300px;
-  width: auto; }
-
+@import url(./components/MovieCard/MovieCardStyles.css);
+@import url(./containers/movieIndex/MovieIndexStyles.css);
+@import url(./components/User/UserStyles.css);
 * {
   margin: 0;
   padding: 0;
