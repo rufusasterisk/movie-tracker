@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MovieCard from './MovieCard';
-import { addCardToFavorites, removeFromFavorites, increaseFavoriteCount, decreaseFavoriteCount, updateIsFavorited } from './actions';
+import { addCardToFavorites, removeFromFavorites, increaseFavoriteCount, decreaseFavoriteCount, updateIsFavorited, addToFavorites } from './actions';
 
 const mapStateToProps = store => ({
   currentUserName: store.currentUserName,
@@ -25,6 +25,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateIsFavorited: (data) => {
     dispatch(updateIsFavorited(data))
+  },
+  addToFavorites: (data) => {
+    dispatch(addToFavorites(data))
   }
 });
 
