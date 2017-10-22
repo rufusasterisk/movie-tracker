@@ -1,15 +1,32 @@
 main {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  background-color: #1A1A1A; }
 
-.left-header {
-  width: 25vw; }
+.nav-bar {
+  background-color: black;
+  background-image: linear-gradient(black, #1A1A1A);
+  display: flex;
+  justify-content: space-between; }
 
-.card-index {
-  width: 75vw; }
+.app-title {
+  color: #fff;
+  padding: 30px;
+  font-size: 200%; }
 
-#main h1 {
-  background-color: blue; }
+.nav-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 15px 30px 15px 10px; }
+
+.see-all-movies-btn,
+.see-favorites-btn {
+  border: none;
+  padding: 5px;
+  background-color: #E36C09;
+  margin: 10px; }
 
 #main {
   text-align: center; }

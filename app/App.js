@@ -22,14 +22,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav>
-          <User />
+        <nav className="nav-bar">
+          <h1 className="app-title">Movie Tracker</h1>
+          <section className="nav-btns">
+            <button className="see-all-movies-btn">All Movies</button>
+            <button className="see-favorites-btn">Favorites</button>
+            <User />
+        </section>
         </nav>
 
         <main>
-          <article className="left-header">
-            <h1>Movie Tracker</h1>
-          </article>
           <article className="card-index">
             {/* <FavoritesIndexContainer /> */}
             <MovieIndex />
