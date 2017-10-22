@@ -8,6 +8,10 @@ class MovieCard extends Component {
 
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props !== nextProps;
+  }
+
   checkIfFavorited = () => {
     const { currentUserID, movieArray, updateIsFavorited, movieID } = this.props;
     if (currentUserID === '') {

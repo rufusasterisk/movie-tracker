@@ -10,12 +10,6 @@ class MovieIndex extends Component {
     super();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // console.log('MovieIndex this.props: ', this.props);
-    // console.log('MovieIndex nextProps: ', nextProps);
-    return this.props !== nextProps;
-  }
-
   generateCards(movieArray) {
     return movieArray.map(movie => (
       <MovieCardContainer
