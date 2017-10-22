@@ -1,5 +1,6 @@
 .movie-card {
-  position: relative; }
+  position: relative;
+  margin: 15px; }
 
 .poster-img {
   height: 350px;

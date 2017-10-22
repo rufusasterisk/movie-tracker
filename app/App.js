@@ -27,10 +27,10 @@ class App extends Component {
         </nav>
 
         <main>
-          <article>
+          <article className="left-header">
             <h1>Movie Tracker</h1>
           </article>
-          <article>
+          <article className="card-index">
             {/* <FavoritesIndexContainer /> */}
             <MovieIndex />
           </article>

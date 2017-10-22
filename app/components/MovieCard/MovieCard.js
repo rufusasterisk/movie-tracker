@@ -7,7 +7,7 @@ const MovieCard = (props) => {
 
   const checkIfFavorited = () => {
     if (currentUserID === '') {
-      console.log('in no user logged in if block');
+      console.log('in no user logged in IF block');
       //re-route to login page
     } else {
       console.log('in else blcok: ');
