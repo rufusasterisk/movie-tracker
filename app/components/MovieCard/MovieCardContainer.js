@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MovieCard from './MovieCard';
-import { addCardToFavorites, removeFromFavorites, increaseFavoriteCount, decreaseFavoriteCount } from './actions';
+import { addCardToFavorites, removeFromFavorites, increaseFavoriteCount, decreaseFavoriteCount, updateIsFavorited } from './actions';
 
 const mapStateToProps = store => ({
   currentUserName: store.currentUserName,
@@ -8,7 +8,6 @@ const mapStateToProps = store => ({
   movieArray: store.displayMoviesReducer,
   favorites: store.favorites,
   currentUserID: store.currentUserID,
-  isFavorited: store.isFavorited
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
   },
   decreaseFavoriteCount: (data) => {
     dispatch(decreaseFavoriteCount(data))
+  },
+  updateIsFavorited: (data) => {
+    dispatch(updateIsFavorited(data))
   }
 });
 

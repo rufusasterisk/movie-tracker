@@ -17,6 +17,10 @@ export const showFavorites = (data) => ({
   data
 })
 
+export const updateIsFavorited = (data) => ({
+  type: 'UPDATE_IS_FAVORITED',
+  data
+})
 export const setFavoriteCount = (data) => ({
   type: 'SET_FAVORITE_COUNT',
   data
@@ -32,10 +36,10 @@ export const decreaseFavoriteCount = (state) => ({
   state
 })
 
-// export const fetchFavorites = (data) => ({
-//   type: 'FETCH_FAVORITES',
-//   data
-// })
+export const fetchFavorites = (data) => ({
+  type: 'FETCH_FAVORITES',
+  data
+})
 
 const buildFetchPayload = body => ({
   body: JSON.stringify(body),
