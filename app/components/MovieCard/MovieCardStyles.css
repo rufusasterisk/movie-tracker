@@ -1,6 +1,10 @@
 .movie-card {
   position: relative;
-  margin: 15px; }
+  margin: 15px;
+  box-shadow: 5px 5px 5px #101010; }
+
+.movie-card:hover {
+  box-shadow: 5px 5px 10px #CE7831; }
 
 .poster-img {
   height: 350px;

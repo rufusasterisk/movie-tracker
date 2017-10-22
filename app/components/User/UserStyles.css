@@ -6,3 +6,6 @@
   margin: 10px;
   font-size: 120%;
   font-family: Roboto; }
+
+.link-to-log-in:hover {
+  background-color: #CE7831; }
