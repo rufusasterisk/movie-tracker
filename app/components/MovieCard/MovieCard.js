@@ -8,10 +8,6 @@ class MovieCard extends Component {
 
   }
 
-  componentDidMount() {
-    console.log('add? ', this.props.addToFavorites);
-  }
-
   checkIfFavorited = () => {
     const { currentUserID, movieArray, updateIsFavorited, movieID } = this.props;
     if (currentUserID === '') {
@@ -82,7 +78,9 @@ class MovieCard extends Component {
   }
 
   render() {
-    const typeCard = this.props.isFavorited
+
+    const { favorites, movieID } = this.props;
+    const typeCard = favorites.has(movieID)
       ? this.favorited()
       : this.notFavorited();
 

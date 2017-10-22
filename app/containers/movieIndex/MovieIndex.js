@@ -17,7 +17,6 @@ class MovieIndex extends Component {
   }
 
   generateCards(movieArray) {
-    console.log(movieArray[0]);
     return movieArray.map(movie => (
       <MovieCardContainer
         key={`CardID-${movie.id}`}
