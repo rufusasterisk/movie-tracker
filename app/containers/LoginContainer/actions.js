@@ -40,14 +40,16 @@ export const createUserSuccess = (status) => ({
 
 export const createUser = fetchPayloadBody => dispatch => {
   dispatch(createUserRequested(true));
-  fetch('http://localhost:3000/api/users/new', buildFetchPayload(fetchPayloadBody))
+  fetch(
+    'http://localhost:3000/api/users/new',
+    buildFetchPayload(fetchPayloadBody))
     .then(response => {
       if (response.status !== 200) {
         throw Error(response);
       }
       return response.json();
     })
-    .then(parsedData => {
+    .then(() => {
       dispatch(createUserRequested(false));
       dispatch(createUserSuccess(true));
     })
@@ -71,7 +73,7 @@ export const tryLogin = fetchPayloadBody => dispatch => {
       dispatch(loginFailure(false));
       dispatch(loginSuccessful(parsedData));
     })
-    .catch((error)=>{
+    .catch(()=>{
       dispatch(loginFailure(true));
       dispatch(loginRequested(false));
     });
