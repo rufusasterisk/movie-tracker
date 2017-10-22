@@ -10,16 +10,10 @@ describe(`Login control component`, () => {
   const mockStore = configureStore(middleWares);
 
   it(`should shallow mount`, () => {
-    // const initialState = {};
-    // const store = mockStore(initialState);
-    // const wrapper = shallow(<Login store={store}/>);
-    //
-    // console.log(wrapper);
-    //
-    //
-    // expect(wrapper.exists()).to.be(true);
-    const wrapper = mount(<div className="some-class" />);
-    expect(wrapper.find('.other-class').exists()).to.be(false);
+    const initialState = {};
+    const store = mockStore(initialState);
+    const wrapper = shallow(<Login store={store}/>);
+    expect(wrapper.exists()).toBe(true);
   });
 
 
