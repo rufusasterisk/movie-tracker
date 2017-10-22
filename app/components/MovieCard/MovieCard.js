@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as actions from './actions';
 
 const MovieCard = (props) => {
-  const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, movieArray , favorites } = props;
+  const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, movieArray , favorites, isFavorited } = props;
 
   const checkIfFavorited = () => {
     if (currentUserID === '') {
@@ -17,9 +17,6 @@ const MovieCard = (props) => {
       const favoritedIndex = movieArray.indexOf(findNewFavorite);
       const newMovieArray = movieArray;
       newMovieArray[favoritedIndex].isFavorited = !movieArray[favoritedIndex].isFavorited;
-      console.log(newMovieArray);
-      //how do we send this newMovieArray up to store?!?!?!?!
-      
     }
   }
 
@@ -39,18 +36,31 @@ const MovieCard = (props) => {
 
   const removeFromFavorites = () => {
     decreaseFavoriteCount();
-    //call a util file to run the fetch on our API
-    //then call removeFromFavorites in actions,
   }
 
-  return (
-    <div className="movie-card">
-      <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
-      <div className="favorite-btn" onClick={checkIfFavorited}></div>
-    </div>
-  );
-};
+  const favorited = () => {
+    console.log('we are inside fave');
+    return (<div className="movie-card">
+        <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
+        <div className="full-btn" onClick={checkIfFavorited}></div>
+      </div>
+    );
+  }
 
+  const notFavorited = () => {
+    console.log('we are inside NOTfave');
+    return (<div className="movie-card">
+      <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
+      <div className="empty-btn" onClick={checkIfFavorited}></div>
+    </div>
+    );
+  }
+  console.log('should see true twice:', isFavorited);
+  const typeCard = isFavorited ? favorited() : notFavorited();
+    return (
+    <div>{typeCard}</div>
+    );
+    
 // {/* <h3>{title}</h3>
 // <ul>
 // <li><button onClick={checkIfFavorited}>FAVE</button></li>
@@ -58,6 +68,7 @@ const MovieCard = (props) => {
 // <li>{voteAvg}</li>
 // </ul> */}
 // {/* <img src={`http://image.tmdb.org/t/p/w1920${backdrop}`} /> */}
+}
 
 MovieCard.propTypes = {
   title: PropTypes.string,
