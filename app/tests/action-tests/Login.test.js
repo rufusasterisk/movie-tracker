@@ -1,10 +1,10 @@
-import Login from '../../../components/Login/Login';
-import * as actions from '../../../components/Login/actions';
+import Login from '../../components/Login/Login';
+import * as actions from '../../components/Login/actions';
 
 describe(`Login`, () => {
   it(`should have helper function to build fetch payload`, () => {
     const body = {
-      email: 'tman2272@aol.com', 
+      email: 'tman2272@aol.com',
       pasword: 'password'
     };
     const expectation = actions.buildFetchPayload(body);
@@ -14,7 +14,7 @@ describe(`Login`, () => {
       method: 'POST'
     };
 
-   expect(expectation).toEqual(expected);
+    expect(expectation).toEqual(expected);
   });
 
   it(`should have an action to request login`, () => {
