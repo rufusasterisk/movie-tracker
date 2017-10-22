@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props);
     this.props.handleFetch();
   }
 
@@ -33,7 +34,7 @@ class App extends Component {
 
         <main>
           <article className="card-index">
-            {/* <FavoritesIndexContainer /> */}
+            <FavoritesIndexContainer />
             <MovieIndex />
           </article>
         </main>
@@ -44,10 +45,15 @@ class App extends Component {
 
 App.propTypes = {
   handleFetch: PropTypes.func
+  //favorites: PropTypes.set
 };
+
+const mapStateToProps = store => ({
+  favorites: store.favorites
+})
 
 const mapDispatchToProps = dispatch => ({
   handleFetch: () => dispatch(grabMovies())
 });
 
-export default connect(undefined, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

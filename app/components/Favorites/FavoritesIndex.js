@@ -33,8 +33,8 @@ class FavoritesIndex extends Component {
       return Object.values(movie);
     })
 
-    return movieData.map(movie => {
-      return <MovieCardContainer
+    return movieData.map(movie => (
+       <MovieCardContainer
           key={`FaveID-${movie[0].id}`}
           title={movie[0].title}
           description={movie[0].description}
@@ -44,7 +44,7 @@ class FavoritesIndex extends Component {
           movieID={movie[0].id}
           release={movie[0].release}
           isFavorited={true} />
-    });
+    ));
   }
 
   render() {
@@ -55,9 +55,10 @@ class FavoritesIndex extends Component {
 
     return (
       <div>
-        <h1>BEGINNING OF FAVES</h1>
-        {mappedFavoriteCards}
-        <h1>END OF FAVES</h1>
+        <h2 className="current-title">Favorites</h2>
+        <section className="movie-index">
+          {mappedFavoriteCards}
+        </section>
       </div>
     );
   }
