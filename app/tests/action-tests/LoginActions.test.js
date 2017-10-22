@@ -1,5 +1,4 @@
-import Login from '../../components/Login/Login';
-import * as actions from '../../components/Login/actions';
+import * as actions from '../../containers/LoginContainer/actions';
 
 describe(`Login`, () => {
   it(`should have helper function to build fetch payload`, () => {

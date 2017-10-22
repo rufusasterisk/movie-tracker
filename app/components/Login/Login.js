@@ -39,6 +39,7 @@ class Login extends Component {
   }
 
   toggleLogin = () => {
+    console.log('in handleChange');
     this.setState({
       loginDisplayed: !this.state.loginDisplayed
     });
