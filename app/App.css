@@ -11,7 +11,7 @@ main {
   justify-content: space-between; }
 
 .app-title {
-  color: #EB8938;
+  color: #EB9B29;
   padding: 30px;
   font-size: 320%;
   font-family: Monoton, sans-serif;
@@ -26,15 +26,16 @@ main {
 
 .see-all-movies-btn,
 .see-favorites-btn {
+  border-radius: 2px;
   border: none;
   padding: 8px 15px;
-  background-color: #EB8938;
+  background-color: #EB9B29;
   margin: 10px;
   font-size: 120%; }
 
 .see-all-movies-btn:hover,
 .see-favorites-btn:hover {
-  background-color: #CE7831; }
+  background-color: #e48227; }
 
 #main {
   text-align: center; }

@@ -2,10 +2,11 @@
 .link-to-log-in {
   border: none;
   padding: 8px 15px;
-  background-color: #EB8938;
+  background-color: #EB9B29;
   margin: 10px;
   font-size: 120%;
-  font-family: Roboto; }
+  font-family: Roboto;
+  border-radius: 2px; }
 
 .link-to-log-in:hover {
-  background-color: #CE7831; }
+  background-color: #e48227; }
