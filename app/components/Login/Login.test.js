@@ -1,53 +1,128 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Login from './Login';
-import configureStore from 'redux-mock-store';
+// import configureStore from 'redux-mock-store';
 
 
-describe(`Login control component`, () => {
+describe(`Login component`, () => {
 
-  const middleWares = [];
-  const mockStore = configureStore(middleWares);
-  const initialStoreState = {};
-  const store = mockStore(initialStoreState);
-  const initialLocalState = {
-    email: '',
-    name: '',
-    password: '',
-    verifyPassword: '',
-    loginDisplayed: true
-  };
+  // const middleWares = [];
+  // const mockStore = configureStore(middleWares);
+  // const initialStoreState = {};
+  // const store = mockStore(initialStoreState);
+  // const initialLocalState = {
+  //   email: '',
+  //   name: '',
+  //   password: '',
+  //   verifyPassword: '',
+  //   loginDisplayed: true
+  // };
+
+  let
+    shallowWrapper,
+    mockFunc1 = jest.fn(),
+    mockFunc2 = jest.fn();
+
+  beforeEach( () => {
+    shallowWrapper = shallow(
+      <Login
+        loginRequested={false}
+        loginFailure={false}
+        loginSuccessful={false}
+        tryLogin={mockFunc1}
+        createUser={mockFunc2}/>
+    );
+  });
 
   it(`should shallow mount`, () => {
-    const wrapper = shallow(<Login store={store}/>);
+    // const wrapper = shallow(<Login store={store}/>);
 
-    expect(wrapper.exists()).toBe(true);
+    expect(shallowWrapper.exists()).toBe(true);
   });
 
   it(`should mount`, () => {
-    const wrapper = mount(<Login store={store}/>);
+    const wrapper = mount(<Login />);
 
     expect(wrapper.exists()).toBe(true);
   });
 
   it(`should toggle between login and new user`, () => {
-    const wrapper = shallow(<Login store={store} />);
-    const loginBtn = wrapper.find('button').at(1);
-    // wrapper.setState(initialLocalState);
+    let toggleBtn = shallowWrapper.find('button').at(1);
 
-    expect(wrapper.state().loginDisplayed).toEqual(true);
+    expect(shallowWrapper.state().loginDisplayed).toEqual(true);
 
-    console.log(loginBtn.debug());
+    toggleBtn.simulate('click');
 
-    loginBtn.simulate('click');
+    expect(shallowWrapper.state().loginDisplayed).toEqual(false);
 
-    console.log(wrapper.state());
+    toggleBtn = shallowWrapper.find('button').at(0);
+    toggleBtn.simulate('click');
 
-    expect(wrapper.state('loginDisplayed')).toBe(false);
+    expect(shallowWrapper.state().loginDisplayed).toEqual(true);
 
   });
 
-  it(`should update state`, () => {
+  it(`should update email string in state on Login`, () => {
+    const emailLoginField = shallowWrapper.find('.login-email').first();
+
+    expect(shallowWrapper.state().email).toEqual('');
+    emailLoginField.simulate('change', { target: { value: 'test@email.com' } });
+    expect(shallowWrapper.state().email).toEqual('test@email.com');
+
+  });
+
+  it(`should update password string in state on Login`, () => {
+    const passwordLoginField = shallowWrapper.find('.login-password').first();
+
+    expect(shallowWrapper.state().password).toEqual('');
+    passwordLoginField.simulate('change',
+      { target: { value: 'myPassword' } });
+    expect(shallowWrapper.state().password).toEqual('myPassword');
+
+  });
+
+  it(`should update name string in state on New User`, () => {
+    shallowWrapper.find('button').at(1).simulate('click');
+    const nameNewUserField = shallowWrapper.find('.login-name').first();
+
+    expect(shallowWrapper.state().name).toEqual('');
+    nameNewUserField.simulate('change',
+      { target: { value: 'test@email.com' } });
+    expect(shallowWrapper.state().name).toEqual('test@email.com');
+
+  });
+
+  it(`should update email string in state on New User`, () => {
+    shallowWrapper.find('button').at(1).simulate('click');
+    const emailNewUserField = shallowWrapper.find('.login-email').first();
+
+    expect(shallowWrapper.state().email).toEqual('');
+    emailNewUserField.simulate('change',
+      { target: { value: 'test@email.com' } });
+    expect(shallowWrapper.state().email).toEqual('test@email.com');
+
+  });
+
+  it(`should update password string in state on New User`, () => {
+    shallowWrapper.find('button').at(1).simulate('click');
+    const passwordNewUserField = shallowWrapper.find('.login-password').first();
+
+    expect(shallowWrapper.state().password).toEqual('');
+    passwordNewUserField.simulate('change',
+      { target: { value: 'myPassword' } });
+    expect(shallowWrapper.state().password).toEqual('myPassword');
+
+  });
+
+  it(`should update password string in state on New User`, () => {
+    shallowWrapper.find('button').at(1).simulate('click');
+    const verifyNewUserField =
+      shallowWrapper.find('.login-verify-password').first();
+
+    expect(shallowWrapper.state().verifyPassword).toEqual('');
+    verifyNewUserField.simulate('change',
+      { target: { value: 'myPassword' } });
+    expect(shallowWrapper.state().verifyPassword).toEqual('myPassword');
 
   });
 
