@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import Login from './components/Login/Login';
+import FavoritesIndexContainer from './components/Favorites/FavoritesIndexContainer';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './utils/rootReducer';
@@ -19,6 +20,7 @@ ReactDOM.render(
       <div>
         <Route exact path="/" component={App} />
         <Route path="/login" component={Login} />
+        <Route path="/favorites" component={FavoritesIndexContainer} />
       </div>
     </Router>
   </Provider>, document.getElementById('main')
