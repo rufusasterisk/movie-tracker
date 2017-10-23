@@ -1,3 +1,3 @@
 export const logOut = () => ({
-  type: 'LOG_OUT',
-})
+  type: 'LOG_OUT'
+});
