@@ -1,6 +1,9 @@
 import {combineReducers} from 'redux';
 import displayMoviesReducer from '../containers/movieIndex/reducer';
-import { favoritesCounter, favorites, updateIsFavorited } from '../components/MovieCard/reducers';
+import {
+  favoritesCounter, 
+  favorites, 
+  updateIsFavorited } from '../components/MovieCard/reducers';
 import {
   loginRequested,
   loginFailure,

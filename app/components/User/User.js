@@ -11,8 +11,7 @@ const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
       <article>
         <h3>{`Welcome, ${currentUserName}`}</h3>
         <button
-          onClick={handleLogOut}
-        >
+          onClick={handleLogOut} >
           Log Out</button>
       </article>
     );

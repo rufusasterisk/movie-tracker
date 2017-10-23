@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'react';
 import MovieCardContainer from '../MovieCard/MovieCardContainer';
-import * as actions from './actions';
 
 class FavoritesIndex extends Component {
   constructor() {
@@ -20,7 +19,7 @@ class FavoritesIndex extends Component {
       return movieArray.reduce((acc, movie) => {
         if (movie.id === favorite) {
           acc[movie.id] = movie;
-        };
+        }
         return acc;
       }, {});
     });
@@ -31,19 +30,19 @@ class FavoritesIndex extends Component {
 
     const movieData = favoriteMovies.map(movie => {
       return Object.values(movie);
-    })
+    });
 
     return movieData.map(movie => (
-       <MovieCardContainer
-          key={`FaveID-${movie[0].id}`}
-          title={movie[0].title}
-          description={movie[0].description}
-          voteAvg={movie[0].voteAvg}
-          poster={movie[0].poster}
-          backdrop={movie[0].backdrop}
-          movieID={movie[0].id}
-          release={movie[0].release}
-          isFavorited={true} />
+      <MovieCardContainer
+        key={`FaveID-${movie[0].id}`}
+        title={movie[0].title}
+        description={movie[0].description}
+        voteAvg={movie[0].voteAvg}
+        poster={movie[0].poster}
+        backdrop={movie[0].backdrop}
+        movieID={movie[0].id}
+        release={movie[0].release}
+        isFavorited={true} />
     ));
   }
 
@@ -64,5 +63,10 @@ class FavoritesIndex extends Component {
   }
 
 }
+
+FavoritesIndex.propTypes = {
+  favorites: PropTypes.array,
+  movieArray: PropTypes.array
+};
 
 export default FavoritesIndex;
