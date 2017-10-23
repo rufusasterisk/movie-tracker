@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-// import { tryLogin, createUser } from './actions';
 import { Redirect } from 'react-router';
 
 class Login extends Component {
@@ -62,7 +60,26 @@ class Login extends Component {
         <div>LOADING!!!</div>
       );
     }
+  }
 
+  generateCreateUserStatus(){
+    if(this.props.loginSuccessful){
+      return (
+        <Redirect to="/" />
+      );
+    }
+
+    if(this.props.createUserFailure) {
+      return(
+        <div className="no-match">Email is already in use</div>
+      )
+    }
+
+    if (this.props.createUserRequested) {
+      return (
+        <div>LOADING!!!</div>
+      )
+    }
   }
 
   generateLoginTab() {
@@ -129,13 +146,13 @@ class Login extends Component {
               className='login-email'
               onChange={this.handleChange.bind(this, 'email')}
               placeholder='Email'
-              type='text'
+              type='email'
               value={this.state.email} />
             <input
               className='login-password'
               onChange={this.handleChange.bind(this, 'password')}
               placeholder='Password'
-              type='text'
+              type='password'
               value={this.state.password} />
             <input
               className='login-verify-password'
@@ -149,6 +166,7 @@ class Login extends Component {
               type='submit'
               value='Create Account' />
           </form>
+          {this.generateCreateUserStatus()}
         </section>
         <footer className="login-footer"></footer>
       </div>
