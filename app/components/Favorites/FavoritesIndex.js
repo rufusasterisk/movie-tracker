@@ -7,50 +7,42 @@ import { Link } from 'react-router-dom';
 class FavoritesIndex extends Component {
   constructor() {
     super();
+
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props !== nextProps;
+  componentDidMount() {
+    this.props.getTheFavorites();
   }
 
-  generateFavoriteMovies() {
-    const { favorites, movieArray } = this.props;
-    const favoritesArray = [...favorites];
 
-    return favoritesArray.map(favorite => {
-      return movieArray.reduce((acc, movie) => {
-        if (movie.id === favorite) {
-          acc[movie.id] = movie;
-        };
-        return acc;
-      }, {});
-    });
+  getFavorites() {
+    const { currentUserID } = this.props;
+    console.log(this.props.getTheFavorites);
+    this.props.getFavorites(currentUserID);
   }
 
   generateCards() {
-    const favoriteMovies = this.generateFavoriteMovies();
+    const favoriteMovies = this.getFavorites();
+    console.log(favoriteMovies);
 
-    const movieData = favoriteMovies.map(movie => {
-      return Object.values(movie);
-    })
-
-    return movieData.map(movie => (
+    return favoriteMovies.map(movie => (
        <MovieCardContainer
-          key={`FaveID-${movie[0].id}`}
-          title={movie[0].title}
-          description={movie[0].description}
-          voteAvg={movie[0].voteAvg}
-          poster={movie[0].poster}
-          backdrop={movie[0].backdrop}
-          movieID={movie[0].id}
-          release={movie[0].release}
+          key={`FaveID-${movie.id}`}
+          title={movie.title}
+          description={movie.description}
+          voteAvg={movie.voteAvg}
+          poster={movie.poster}
+          backdrop={movie.backdrop}
+          movieID={movie.id}
+          release={movie.release}
           isFavorited={true} />
     ));
   }
 
   render() {
+    const favoriteMovies = this.getFavorites();
     const { movieArray } = this.props;
-    const mappedFavoriteCards = movieArray.length
+    const mappedFavoriteCards = favoriteMovies
       ? this.generateCards()
       : null;
 
@@ -77,3 +69,18 @@ class FavoritesIndex extends Component {
 }
 
 export default FavoritesIndex;
+
+
+// generateFavoriteMovies() {
+//   const { favorites, movieArray } = this.props;
+//   const favoritesArray = [...favorites];
+//
+//   return favoritesArray.map(favorite => {
+//     return movieArray.reduce((acc, movie) => {
+//       if (movie.id === favorite) {
+//         acc[movie.id] = movie;
+//       };
+//       return acc;
+//     }, {});
+//   });
+// }
