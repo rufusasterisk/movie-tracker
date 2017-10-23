@@ -1,22 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Login from './Login';
-// import configureStore from 'redux-mock-store';
-
 
 describe(`Login component`, () => {
-
-  // const middleWares = [];
-  // const mockStore = configureStore(middleWares);
-  // const initialStoreState = {};
-  // const store = mockStore(initialStoreState);
-  // const initialLocalState = {
-  //   email: '',
-  //   name: '',
-  //   password: '',
-  //   verifyPassword: '',
-  //   loginDisplayed: true
-  // };
 
   let
     shallowWrapper,
@@ -35,8 +21,6 @@ describe(`Login component`, () => {
   });
 
   it(`should shallow mount`, () => {
-    // const wrapper = shallow(<Login store={store}/>);
-
     expect(shallowWrapper.exists()).toBe(true);
   });
 
