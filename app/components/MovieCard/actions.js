@@ -1,7 +1,7 @@
-export const addCardToFavorites = (data) => ({
+export const addCardToFavorites = (info) => ({
   type: 'ADD_TO_FAVORITES',
-  data
-})
+  info
+});
 
 const buildFetchPayload = body => ({
   body: JSON.stringify(body),
@@ -37,31 +37,31 @@ export const addToFavorites = fetchPayloadBody => dispatch => {
           buildDeletePayload(fetchPayloadBody)
         )
       }
-    })
-}
+    });
+};
 
-export const removeFromFavorites = (data) => ({
+export const removeFromFavorites = (info) => ({
   type: 'REMOVE_FROM_FAVORITES',
-  data
+  info
 });
 
 export const resetFavorites = () => ({
   type: 'RESET_FAVORITES'
 });
 
-export const showFavorites = (data) => ({
+export const showFavorites = (info) => ({
   type: 'SHOW_FAVORITES',
-  data
+  info
 });
 
-export const updateIsFavorited = (data) => ({
+export const updateIsFavorited = (info) => ({
   type: 'UPDATE_IS_FAVORITED',
-  data
+  info
 });
 
-export const setFavoriteCount = (data) => ({
+export const setFavoriteCount = (info) => ({
   type: 'SET_FAVORITE_COUNT',
-  data
+  info
 });
 
 export const increaseFavoriteCount = (state) => ({
@@ -74,7 +74,7 @@ export const decreaseFavoriteCount = (state) => ({
   state
 });
 
-export const fetchFavorites = (data) => ({
+export const fetchFavorites = (info) => ({
   type: 'FETCH_FAVORITES',
-  data
+  info
 });

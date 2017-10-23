@@ -4,3 +4,10 @@
   padding: 30px;
   color: #fff;
   font-family: Roboto; }
+
+.favorites-page {
+  background-color: #1A1A1A; }
+
+.favorites-footer {
+  height: 75vh;
+  background-color: #1A1A1A; }

@@ -13,7 +13,7 @@ main {
 .app-title {
   color: #EB9B29;
   padding: 30px;
-  font-size: 320%;
+  font-size: 225%;
   font-family: Monoton, sans-serif;
   letter-spacing: 3px; }
 
@@ -31,7 +31,8 @@ main {
   padding: 8px 15px;
   background-color: #EB9B29;
   margin: 10px;
-  font-size: 120%; }
+  font-size: 100%;
+  font-family: sans-serif; }
 
 .see-all-movies-btn:hover,
 .see-favorites-btn:hover {
