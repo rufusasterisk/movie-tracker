@@ -1,9 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-.movie-index-container {
-
-}
-
 .current-title {
   text-align: left;
   padding: 30px;
@@ -19,4 +15,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.movie-index-footer {
+  height: 50px;
+  background-color: #1a1a1a;
 }

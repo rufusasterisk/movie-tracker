@@ -37,6 +37,7 @@ class MovieIndex extends Component {
         <section className="movie-index">
           {mappedMovieCards}
         </section>
+        <footer className="movie-index-footer"></footer>
       </div>
     );
   }
