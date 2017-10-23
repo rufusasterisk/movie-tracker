@@ -1,7 +1,7 @@
 export const favoritesCounter = (state = 0, action) => {
   switch (action.type) {
   case 'SET_FAVORITE_COUNT':
-    return action.data;
+    return action.info;
   case 'RESET_FAVORITES':
     return 0;
   case 'INCREASE_FAVORITE_COUNT':
@@ -13,12 +13,10 @@ export const favoritesCounter = (state = 0, action) => {
   }
 };
 
-//[440021, 381283]
-
 export const favorites = (state = [], action) => {
   switch (action.type) {
   case 'ADD_TO_FAVORITES':
-    return [...state, action.data.movie_id];
+    return [...state, action.info.movie_id];
 
   case 'RESET_FAVORITES':
     return state.map(movie=> {
@@ -36,7 +34,7 @@ export const favorites = (state = [], action) => {
 export const updateIsFavorited = (state = [], action) => {
   switch (action.type) {
   case 'UPDATE_IS_FAVORITED':
-    return action.data;
+    return action.info;
   default:
     return state;
   }
