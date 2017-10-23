@@ -1,5 +1,5 @@
-import MovieIndex from '../../containers/movieIndex/MovieIndex';
-import * as actions from '../../containers/movieIndex/actions';
+import MovieIndex from '../../containers/MovieIndex/MovieIndex';
+import * as actions from '../../actions/MovieIndexActions';
 
 describe(`MOVIE INDEX`, () => {
   it(`should create an action to display movies`, () => {

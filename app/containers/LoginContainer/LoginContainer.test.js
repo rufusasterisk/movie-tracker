@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { tryLogin, createUser } from './actions';
+import { tryLogin, createUser } from '../../actions/LoginContainerActions';
 import LoginContainer from './LoginContainer';
 
 

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import User from './User';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { logOut } from './actions';
+import { logOut } from '../../actions/UserActions';
 
 describe(`User button`, () => {
   const
