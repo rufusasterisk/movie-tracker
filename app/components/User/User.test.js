@@ -41,12 +41,12 @@ describe(`User button`, () => {
   });
 
   it(`should render the logged in option`, () => {
-    expect(altWrapper.find('article').length).toEqual(1);
+    expect(altWrapper.find('button').text()).toEqual('Log Out');
   });
-
-  it(`should display the user name`, () => {
-    expect(altWrapper.find('h3').text()).toEqual('Welcome, testName');
-  });
+  //
+  // it(`should display the user name`, () => {
+  //   expect(altWrapper.find('h3').text()).toEqual('Welcome, testName');
+  // });
 
   it(`should dispatch the logOut action`, () => {
     // altWrapper.find('button').simulate('click');

@@ -26,16 +26,19 @@ export const addToFavorites = fetchPayloadBody => dispatch => {
     .then(parsedData => {
       return parsedData.data.find(favorite => {
         return favorite.movie_id === fetchPayloadBody.movie_id;
-      })
+      });
     })
     .then(found => {
       if (!found) {
         fetch(`http://localhost:3000/api/users/favorites/new`,
-          buildFetchPayload(fetchPayloadBody))
+          buildFetchPayload(fetchPayloadBody));
       } else {
-        fetch(`http://localhost:3000/api/users/${fetchPayloadBody.user_id}/favorites/${fetchPayloadBody.movie_id}`,
+        fetch(
+          `http://localhost:3000/api/users/
+              ${fetchPayloadBody.user_id}/favorites/
+              ${fetchPayloadBody.movie_id}`,
           buildDeletePayload(fetchPayloadBody)
-        )
+        );
       }
     });
 };

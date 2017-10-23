@@ -28,7 +28,8 @@ class MovieCard extends Component {
       });
       const favoritedIndex = movieArray.indexOf(findNewFavorite);
       const newMovieArray = [...movieArray];
-      newMovieArray[favoritedIndex].isFavorited = !movieArray[favoritedIndex].isFavorited;
+      newMovieArray[favoritedIndex].isFavorited =
+        !movieArray[favoritedIndex].isFavorited;
       updateIsFavorited(newMovieArray);
     }
   };

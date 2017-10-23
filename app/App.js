@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { grabMovies, displayMovies } from './actions/MovieIndexActions';
 import MovieIndex from './containers/MovieIndex/MovieIndex';
-import FavoritesIndexContainer from './components/Favorites/FavoritesIndexContainer';
+import FavoritesIndexContainer from
+  './components/Favorites/FavoritesIndexContainer';
 import User from './components/User/User';
 import getRecentMovies from './utils/getRecentMovies';
 import { dispatch } from 'redux';

@@ -10,10 +10,10 @@ import {
   increaseFavoriteCount,
   decreaseFavoriteCount,
   fetchFavorites } from '../../actions/MovieCardActions';
-const testData = {
-  data1: 'testData1',
-  data2: 2,
-  data3: true
+const testinfo = {
+  info1: 'testinfo1',
+  info2: 2,
+  info3: true
 };
 
 
@@ -22,10 +22,10 @@ describe(`addCardToFavorites actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'ADD_TO_FAVORITES',
-      data: testData
+      info: testinfo
     };
 
-    expect(addCardToFavorites(testData)).toEqual(expectation);
+    expect(addCardToFavorites(testinfo)).toEqual(expectation);
   });
 });
 
@@ -43,7 +43,7 @@ describe(`addToFavorites actions`, () => {
   const mockGetURL = `http://localhost:3000/api/users/1/favorites`;
   const mockGetResponse = `{
     "status": "success",
-    "data": [
+    "info": [
       {
         "id": 1,
         "movie_id": 440021,
@@ -90,10 +90,10 @@ describe(`removeFromFavorites actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'REMOVE_FROM_FAVORITES',
-      data: testData
+      info: testinfo
     };
 
-    expect(removeFromFavorites(testData)).toEqual(expectation);
+    expect(removeFromFavorites(testinfo)).toEqual(expectation);
   });
 });
 
@@ -113,10 +113,10 @@ describe(`showFavorites actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'SHOW_FAVORITES',
-      data: testData
+      info: testinfo
     };
 
-    expect(showFavorites(testData)).toEqual(expectation);
+    expect(showFavorites(testinfo)).toEqual(expectation);
   });
 });
 
@@ -125,10 +125,10 @@ describe(`updateIsFavorited actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'UPDATE_IS_FAVORITED',
-      data: testData
+      info: testinfo
     };
 
-    expect(updateIsFavorited(testData)).toEqual(expectation);
+    expect(updateIsFavorited(testinfo)).toEqual(expectation);
   });
 });
 
@@ -137,10 +137,10 @@ describe(`setFavoriteCount actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'SET_FAVORITE_COUNT',
-      data: testData
+      info: testinfo
     };
 
-    expect(setFavoriteCount(testData)).toEqual(expectation);
+    expect(setFavoriteCount(testinfo)).toEqual(expectation);
   });
 });
 
@@ -149,10 +149,10 @@ describe(`increaseFavoriteCount actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'INCREASE_FAVORITE_COUNT',
-      state: testData
+      state: testinfo
     };
 
-    expect(increaseFavoriteCount(testData)).toEqual(expectation);
+    expect(increaseFavoriteCount(testinfo)).toEqual(expectation);
   });
 });
 
@@ -161,10 +161,10 @@ describe(`decreaseFavoriteCount actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'DECREASE_FAVORITE_COUNT',
-      state: testData
+      state: testinfo
     };
 
-    expect(decreaseFavoriteCount(testData)).toEqual(expectation);
+    expect(decreaseFavoriteCount(testinfo)).toEqual(expectation);
   });
 });
 
@@ -173,9 +173,9 @@ describe(`fetchFavorites actions`, () => {
   it(`should return an action`, () => {
     const expectation = {
       type: 'FETCH_FAVORITES',
-      data: testData
+      info: testinfo
     };
 
-    expect(fetchFavorites(testData)).toEqual(expectation);
+    expect(fetchFavorites(testinfo)).toEqual(expectation);
   });
 });

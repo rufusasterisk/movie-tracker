@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import LoginContainer from './containers/LoginContainer/LoginContainer';
-import FavoritesIndexContainer from './components/Favorites/FavoritesIndexContainer';
+import FavoritesIndexContainer from
+  './components/Favorites/FavoritesIndexContainer';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './utils/rootReducer';

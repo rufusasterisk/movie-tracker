@@ -36,13 +36,16 @@ describe(`LoginContainer`, () => {
   });
 
   it(`should dispatch the tryLogin action from the Login component`, () => {
-  //   const dispatchedValues = {"type": "TRY_LOGIN", "email": "test@email.com", "password": "myPW" };
-  //   // console.log(loginProps);
-  //
-  //   loginProps.tryLogin(dispatchedValues);
-  //   // expect(store.isActionDispatched({
-  //   //   type: 'MY_TYPE'
-  //   // })).toBe(true);
+    // const dispatchedValues = {
+    //  "type": "TRY_LOGIN",
+    //  "email": "test@email.com",
+    //  "password": "myPW" };
+    // // console.log(loginProps);
+    //
+    // loginProps.tryLogin(dispatchedValues);
+    // // expect(store.isActionDispatched({
+    // //   type: 'MY_TYPE'
+    // // })).toBe(true);
   });
 
 
