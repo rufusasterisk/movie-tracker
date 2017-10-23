@@ -12,7 +12,7 @@ describe(`favoritesCounter reducer`, () => {
 
   it(`sets a favorite count`, () => {
     const mockSetPayload = {
-      data: 42,
+      info: 42,
       type: 'SET_FAVORITE_COUNT'
     };
 
@@ -49,6 +49,6 @@ describe(`favorites reducer`, () => {
   it(`retuns a default state`, () => {
     const mockAction = { type: '' };
 
-    expect(favorites(undefined, mockAction)).toEqual(new Set());
+    expect(favorites(undefined, mockAction)).toEqual([]);
   });
 });
