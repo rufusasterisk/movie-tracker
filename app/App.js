@@ -32,7 +32,7 @@ class App extends Component {
               className="see-favorites-btn"
               to="/favorites">Favorites </Link>
             <User />
-        </section>
+          </section>
         </nav>
 
         <main>
@@ -47,12 +47,11 @@ class App extends Component {
 
 App.propTypes = {
   handleFetch: PropTypes.func
-  //favorites: PropTypes.set
 };
 
 const mapStateToProps = store => ({
   favorites: store.favorites
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   handleFetch: () => dispatch(grabMovies())
