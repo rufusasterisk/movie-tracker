@@ -12,7 +12,7 @@ const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
         <h3>{`Welcome, ${currentUserName}`}</h3>
         <button
           onClick={handleLogOut}
-          >
+          className="link-to-log-in">
           Log Out</button>
       </article>
     )

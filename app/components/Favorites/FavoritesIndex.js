@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'react';
 import MovieCardContainer from '../MovieCard/MovieCardContainer';
 import * as actions from './actions';
+import { Link } from 'react-router-dom';
 
 class FavoritesIndex extends Component {
   constructor() {
@@ -55,6 +56,16 @@ class FavoritesIndex extends Component {
 
     return (
       <div>
+        <nav className="nav-bar">
+          <h1 className="app-title">Movie Tracker</h1>
+          <section className="nav-btns">
+            <Link
+              className="see-all-movies-btn"
+              to="/">All Movies </Link>
+            <button className="see-favorites-btn">Favorites</button>
+        </section>
+        </nav>
+
         <h2 className="current-title">Favorites</h2>
         <section className="movie-index">
           {mappedFavoriteCards}
