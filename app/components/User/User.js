@@ -11,43 +11,42 @@ const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
       <article>
         <h3>{`Welcome, ${currentUserName}`}</h3>
         <button
-          onClick={handleLogOut}
-          >
+          onClick={handleLogOut} >
           Log Out</button>
       </article>
-    )
-  }
+    );
+  };
 
   const generateLoginMenu = () => {
     return (
       <button className="link-to-log-in">
         <Link to="/login">Log In</Link>
       </button>
-    )
-  }
+    );
+  };
 
   return (
     loginSuccessful
       ? generateUserMenu()
       : generateLoginMenu()
-  )
-}
+  );
+};
 
 User.propTypes = {
   currentUserName: PropTypes.string,
   loginSuccessful: PropTypes.bool,
   handleLogOut: PropTypes.func
-}
+};
 
 const mapStateToProps = store => ({
   currentUserName: store.currentUserName,
   loginSuccessful: store.loginSuccessful
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   handleLogOut: () => {
-    dispatch(logOut())
+    dispatch(logOut());
   }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);
