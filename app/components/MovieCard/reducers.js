@@ -15,10 +15,10 @@ export const favoritesCounter = (state = 0, action) => {
 
 //[440021, 381283]
 
-export const favorites = (state = new Set(), action) => {
+export const favorites = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TO_FAVORITES':
-      return state.add(action.data.movie_id);
+      return [...state, action.data.movie_id];
 
     case 'RESET_FAVORITES':
       return state.map(movie=> {
