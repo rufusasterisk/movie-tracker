@@ -67,6 +67,11 @@ class Login extends Component {
 
   generateLoginTab() {
     return (
+      <div>
+      <nav className="nav-bar">
+        <h1 className="app-title">Movie Tracker</h1>
+      </nav>
+
       <section className="login-page">
         <button
           className="pick-a-tab disabled"
@@ -97,11 +102,17 @@ class Login extends Component {
           {this.generateLoginStatus()}
         </div>
       </section>
+    </div>
     );
   }
 
   generateNewUserTab() {
     return (
+      <div>
+      <nav className="nav-bar">
+        <h1 className="app-title">Movie Tracker</h1>
+      </nav>
+
       <section className="login-page">
         <button
           className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
@@ -143,6 +154,7 @@ class Login extends Component {
           {/* {fakeProps.createError ? 'That email is in use' : null} */}
         </div>
       </section>
+    </div>
     );
   }
 
