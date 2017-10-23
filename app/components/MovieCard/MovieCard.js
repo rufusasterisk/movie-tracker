@@ -13,7 +13,11 @@ class MovieCard extends Component {
   }
 
   checkIfFavorited = () => {
-    const { currentUserID, movieArray, updateIsFavorited, movieID } = this.props;
+    const {
+      currentUserID,
+      movieArray,
+      updateIsFavorited,
+      movieID } = this.props;
     if (currentUserID === '') {
       alert('You have to be logged in to favorite a movie!');
       //re-route to login page
@@ -121,17 +125,9 @@ MovieCard.propTypes = {
   addToFavorites: PropTypes.func,
   addCardToFavorites: PropTypes.func,
   isFavorited: PropTypes.func,
-  favorites: PropTypes.array
+  favorites: PropTypes.array,
+  movieArray: PropTypes.array,
+  updateIsFavorited: PropTypes.func
 };
 
-
 export default MovieCard;
-
-
-// {/* <h3>{title}</h3>
-// <ul>
-// <li><button onClick={checkIfFavorited}>FAVE</button></li>
-// <li>{description}</li>
-// <li>{voteAvg}</li>
-// </ul> */}
-// {/* <img src={`http://image.tmdb.org/t/p/w1920${backdrop}`} /> */}

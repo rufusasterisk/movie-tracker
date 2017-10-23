@@ -3,7 +3,7 @@ import MovieCard from './MovieCard';
 import {
   addCardToFavorites,
   removeFromFavorites,
-  increaseFavoriteCount, 
+  increaseFavoriteCount,
   decreaseFavoriteCount,
   updateIsFavorited,
   addToFavorites } from './actions';
@@ -17,23 +17,23 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addCardToFavorites: (data) => {
-    dispatch(addCardToFavorites(data))
+  addCardToFavorites: (info) => {
+    dispatch(addCardToFavorites(info));
   },
-  removeFromFavorites: (data) => {
-    dispatch(removeFromFavorites(data))
+  removeFromFavorites: (info) => {
+    dispatch(removeFromFavorites(info));
   },
-  increaseFavoriteCount: (data) => {
-    dispatch(increaseFavoriteCount(data))
+  increaseFavoriteCount: (info) => {
+    dispatch(increaseFavoriteCount(info));
   },
-  decreaseFavoriteCount: (data) => {
-    dispatch(decreaseFavoriteCount(data))
+  decreaseFavoriteCount: (info) => {
+    dispatch(decreaseFavoriteCount(info));
   },
-  updateIsFavorited: (data) => {
-    dispatch(updateIsFavorited(data))
+  updateIsFavorited: (info) => {
+    dispatch(updateIsFavorited(info));
   },
-  addToFavorites: (data) => {
-    dispatch(addToFavorites(data))
+  addToFavorites: (info) => {
+    dispatch(addToFavorites(info));
   }
 });
 
