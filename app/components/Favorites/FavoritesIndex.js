@@ -68,7 +68,7 @@ class FavoritesIndex extends Component {
         <section className="movie-index">
           {mappedFavoriteCards}
         </section>
-        <footer></footer>
+        <footer className="favorites-footer"></footer>
       </div>
     );
   }
