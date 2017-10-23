@@ -77,7 +77,7 @@ class Login extends Component {
             disabled>Login</button>
           <button
             className="pick-a-tab"
-            onClick={this.toggleLogin}>Create</button>
+            onClick={this.toggleLogin}>Create Account</button>
           <form>
             <input
               className='login-email'
@@ -117,7 +117,7 @@ class Login extends Component {
             className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
           <button
             className="pick-a-tab disabled"
-            disabled>Create</button>
+            disabled>Create Account</button>
           <form>
             <input
               className='login-name'
@@ -147,7 +147,7 @@ class Login extends Component {
               className='login-submit'
               onClick={this.handleCreateUser}
               type='submit'
-              value='Create New User' />
+              value='Create Account' />
           </form>
         </section>
         <footer className="login-footer"></footer>
