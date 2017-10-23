@@ -6,7 +6,7 @@ import {
   increaseFavoriteCount,
   decreaseFavoriteCount,
   updateIsFavorited,
-  addToFavorites } from './actions';
+  addToFavorites } from '../../actions/MovieCardActions';
 
 const mapStateToProps = store => ({
   currentUserName: store.currentUserName,

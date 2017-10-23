@@ -9,7 +9,7 @@ import {
   setFavoriteCount,
   increaseFavoriteCount,
   decreaseFavoriteCount,
-  fetchFavorites } from '../../components/MovieCard/actions.js';
+  fetchFavorites } from '../../actions/MovieCardActions';
 const testData = {
   data1: 'testData1',
   data2: 2,

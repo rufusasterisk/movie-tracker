@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MovieCardContainer from '../../components/MovieCard/MovieCardContainer';
 import { connect } from 'react-redux';
 import getRecentMovies from '../../utils/getRecentMovies';
-import { displayMovies } from './actions';
+import { displayMovies } from '../../actions/MovieIndexActions';
 import PropTypes from 'prop-types';
 
 class MovieIndex extends Component {

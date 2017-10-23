@@ -1,7 +1,7 @@
 import {
   favoritesCounter,
   favorites,
-  updateIsFavorited } from '../../components/MovieCard/reducers';
+  updateIsFavorited } from '../../reducers/MovieCardReducers';
 
 describe(`favoritesCounter reducer`, () => {
   it(`returns a default state`, () => {

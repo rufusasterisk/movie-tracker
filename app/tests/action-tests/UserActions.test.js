@@ -1,4 +1,4 @@
-import { logOut } from '../../components/User/actions';
+import { logOut } from '../../actions/UserActions';
 
 describe(`logOut action`, () => {
   it(`should return an action object`, () => {

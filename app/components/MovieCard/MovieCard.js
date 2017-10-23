@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as actions from './actions';
+import * as actions from '../../actions/MovieCardActions';
 
 class MovieCard extends Component {
   constructor() {
