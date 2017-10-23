@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'react';
 import MovieCardContainer from '../MovieCard/MovieCardContainer';
-import * as actions from './actions';
 
 class FavoritesIndex extends Component {
   constructor() {
