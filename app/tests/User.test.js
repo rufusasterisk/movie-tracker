@@ -1,4 +1,4 @@
-import User from '../../components/User/User';
+import User from '../components/User/User';
 
 describe(`USER`, ()=> {
   it.skip(`should return false`, () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { tryLogin, createUser } from './actions';
+// import { connect } from 'react-redux';
+// import { tryLogin, createUser } from './actions';
 import { Redirect } from 'react-router';
 
 class Login extends Component {
@@ -48,8 +48,8 @@ class Login extends Component {
     if (this.props.loginSuccessful) {
       return (
         <Redirect to="/"/>
-      )
-    };
+      );
+    }
 
     if (this.props.loginFailure) {
       return (
@@ -60,8 +60,8 @@ class Login extends Component {
     if (this.props.loginRequested) {
       return (
         <div>LOADING!!!</div>
-      )
-    };
+      );
+    }
 
   }
 
@@ -157,22 +157,8 @@ Login.propTypes = {
   loginRequested: PropTypes.bool,
   loginFailure: PropTypes.bool,
   loginSuccessful: PropTypes.bool,
-  tryLogin: PropTypes.func
+  tryLogin: PropTypes.func,
+  createUser: PropTypes.func
 };
 
-const mapStateToProps = store => ({
-  loginRequested: store.loginRequested,
-  loginFailure: store.loginFailure,
-  loginSuccessful: store.loginSuccessful
-});
-
-const mapDispatchToProps = dispatch => ({
-  tryLogin: (loginObject) => {
-    dispatch(tryLogin(loginObject));
-  },
-  createUser: (createUserObject)  => {
-    dispatch(createUser(createUserObject))
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

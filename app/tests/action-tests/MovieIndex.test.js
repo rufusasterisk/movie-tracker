@@ -1,5 +1,5 @@
-import MovieIndex from '../../../containers/movieIndex/MovieIndex';
-import * as actions from '../../../containers/movieIndex/actions';
+import MovieIndex from '../../containers/movieIndex/MovieIndex';
+import * as actions from '../../containers/movieIndex/actions';
 
 describe(`MOVIE INDEX`, () => {
   it(`should create an action to display movies`, () => {
@@ -7,7 +7,7 @@ describe(`MOVIE INDEX`, () => {
     const expectedAction = {
       type: `DISPLAY_MOVIES`,
       movieArray
-    }
+    };
     const expectation = actions.displayMovies(movieArray);
 
     expect(expectation).toEqual(expectedAction);
