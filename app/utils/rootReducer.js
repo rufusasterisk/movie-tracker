@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import displayMoviesReducer from '../containers/movieIndex/reducer';
+import displayMoviesReducer from '../reducers/movieIndexReducers';
 import {
-  favoritesCounter, 
-  favorites, 
-  updateIsFavorited } from '../components/MovieCard/reducers';
+  favoritesCounter,
+  favorites,
+  updateIsFavorited } from '../reducers/MovieCardReducers';
 import {
   loginRequested,
   loginFailure,
@@ -12,7 +12,7 @@ import {
   currentUserName,
   createUserRequested,
   createUserFailure,
-  createUserSuccess } from '../components/Login/reducers';
+  createUserSuccess } from '../reducers/LoginReducers';
 
 const rootReducer = combineReducers({
   displayMoviesReducer,
