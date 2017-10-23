@@ -1,4 +1,7 @@
 .login-page {
+  background-color: #1a1a1a; }
+
+.login-section {
   border: 1px solid #D0D0D0;
   background-color: #F3F3F3;
   box-shadow: 2px 2px 2px #D0D0D0;
@@ -48,3 +51,7 @@
 
 .login-submit:hover {
   background-color: #e48227; }
+
+.login-footer {
+  height: 50vh;
+  background-color: #1a1a1a; }

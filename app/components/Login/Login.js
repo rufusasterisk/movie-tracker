@@ -67,11 +67,11 @@ class Login extends Component {
 
   generateLoginTab() {
     return (
-      <div>
+      <div className="login-page">
         <nav className="nav-bar">
           <h1 className="app-title">Movie Tracker</h1>
         </nav>
-        <section className="login-page">
+        <section className="login-section">
           <button
             className="pick-a-tab disabled"
             disabled>Login</button>
@@ -101,17 +101,18 @@ class Login extends Component {
             {this.generateLoginStatus()}
           </div>
         </section>
+        <footer className="login-footer"></footer>
       </div>
     );
   }
 
   generateNewUserTab() {
     return (
-      <div>
+      <div className="login-page">
         <nav className="nav-bar">
           <h1 className="app-title">Movie Tracker</h1>
         </nav>
-        <section className="login-page">
+        <section className="login-section">
           <button
             className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
           <button
@@ -149,6 +150,7 @@ class Login extends Component {
               value='Create New User' />
           </form>
         </section>
+        <footer className="login-footer"></footer>
       </div>
     );
   }
