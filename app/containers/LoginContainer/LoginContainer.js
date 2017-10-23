@@ -5,7 +5,10 @@ import Login from '../../components/Login/Login';
 const mapStateToProps = store => ({
   loginRequested: store.loginRequested,
   loginFailure: store.loginFailure,
-  loginSuccessful: store.loginSuccessful
+  loginSuccessful: store.loginSuccessful,
+  createUserRequested: store.createUserRequested,
+  createUserSuccess: store.createUserSuccess,
+  createUserFailure: store.createUserFailure
 });
 
 const mapDispatchToProps = dispatch => ({

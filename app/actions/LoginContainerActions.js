@@ -52,6 +52,10 @@ export const createUser = fetchPayloadBody => dispatch => {
     .then(() => {
       dispatch(createUserRequested(false));
       dispatch(createUserSuccess(true));
+      dispatch(tryLogin({
+        email: fetchPayloadBody.email, 
+        password: fetchPayloadBody.password})
+      );
     })
     .catch(() => {
       dispatch(createUserRequested(false));
