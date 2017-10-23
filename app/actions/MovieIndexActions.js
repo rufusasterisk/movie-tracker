@@ -1,4 +1,4 @@
-import getRecentMovies from '../../utils/getRecentMovies';
+import getRecentMovies from '../utils/getRecentMovies';
 
 export const displayMovies = movieArray => ({
   type: 'DISPLAY_MOVIES',

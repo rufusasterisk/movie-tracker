@@ -1,4 +1,4 @@
-import hostAddress from '../../utils/hostAddress';
+import hostAddress from '../utils/hostAddress';
 
 export const buildFetchPayload = (body) => ({
   body: JSON.stringify(body),
