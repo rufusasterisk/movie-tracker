@@ -82,16 +82,15 @@ class MovieCard extends Component {
   }
 
   render() {
-
     const { favorites, movieID } = this.props;
-    const typeCard = favorites.has(movieID)
-      ? this.favorited()
-      : this.notFavorited();
+    const isFavorited = favorites.find( fav => fav === movieID)
+      const typeCard = isFavorited
+        ? this.favorited()
+        : this.notFavorited();
 
     return (
 
       <div>
-        <button onClick={ () => console.log(this.props)}>hi</button>
         {typeCard}
       </div>
     );
