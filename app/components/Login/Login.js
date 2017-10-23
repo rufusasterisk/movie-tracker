@@ -54,8 +54,8 @@ class Login extends Component {
     if (this.props.loginFailure) {
       return (
         <div className="no-match">Email and Password do not match</div>
-      )
-    };
+      );
+    }
 
     if (this.props.loginRequested) {
       return (
@@ -67,82 +67,89 @@ class Login extends Component {
 
   generateLoginTab() {
     return (
-      <section className="login-page">
-        <button
-          className="pick-a-tab disabled"
-          disabled>Login</button>
-        <button
-          className="pick-a-tab"
-          onClick={this.toggleLogin}>Create</button>
-        <form>
-          <input
-            className='login-email'
-            onChange={this.handleChange.bind(this, 'email')}
-            placeholder='Email'
-            type='email'
-            value={this.state.email} />
-          <input
-            className='login-password'
-            onChange={this.handleChange.bind(this, 'password')}
-            placeholder='Password'
-            type='password'
-            value={this.state.password} />
-          <input
-            className='login-submit'
-            onClick={this.handleLogin}
-            type='submit'
-            value='Login' />
-        </form>
-        <div>
-          {this.generateLoginStatus()}
-        </div>
-      </section>
+      <div>
+        <nav className="nav-bar">
+          <h1 className="app-title">Movie Tracker</h1>
+        </nav>
+        <section className="login-page">
+          <button
+            className="pick-a-tab disabled"
+            disabled>Login</button>
+          <button
+            className="pick-a-tab"
+            onClick={this.toggleLogin}>Create</button>
+          <form>
+            <input
+              className='login-email'
+              onChange={this.handleChange.bind(this, 'email')}
+              placeholder='Email'
+              type='email'
+              value={this.state.email} />
+            <input
+              className='login-password'
+              onChange={this.handleChange.bind(this, 'password')}
+              placeholder='Password'
+              type='password'
+              value={this.state.password} />
+            <input
+              className='login-submit'
+              onClick={this.handleLogin}
+              type='submit'
+              value='Login' />
+          </form>
+          <div>
+            {this.generateLoginStatus()}
+          </div>
+        </section>
+      </div>
     );
   }
 
   generateNewUserTab() {
     return (
-      <section className="login-page">
-        <button
-          className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
-        <button
-          className="pick-a-tab disabled"
-          disabled>Create</button>
-        <form>
-          <input
-            className='login-name'
-            onChange={this.handleChange.bind(this, 'name')}
-            placeholder='Name'
-            type='text'
-            value={this.state.name} />
-          <input
-            className='login-email'
-            onChange={this.handleChange.bind(this, 'email')}
-            placeholder='Email'
-            type='text'
-            value={this.state.email} />
-          <input
-            className='login-password'
-            onChange={this.handleChange.bind(this, 'password')}
-            placeholder='Password'
-            type='text'
-            value={this.state.password} />
-          <input
-            className='login-verify-password'
-            onChange={this.handleChange.bind(this, 'verifyPassword')}
-            placeholder='Verify Password'
-            type='text'
-            value={this.state.verifyPassword} />
-          <input
-            className='login-submit'
-            onClick={this.handleCreateUser}
-            type='submit'
-            value='Create New User' />
-        </form>
-        <div>
-          {/* {fakeProps.createError ? 'That email is in use' : null} */}
-        </div>
-      </section>
+      <div>
+        <nav className="nav-bar">
+          <h1 className="app-title">Movie Tracker</h1>
+        </nav>
+        <section className="login-page">
+          <button
+            className="pick-a-tab" onClick={this.toggleLogin}>Login</button>
+          <button
+            className="pick-a-tab disabled"
+            disabled>Create</button>
+          <form>
+            <input
+              className='login-name'
+              onChange={this.handleChange.bind(this, 'name')}
+              placeholder='Name'
+              type='text'
+              value={this.state.name} />
+            <input
+              className='login-email'
+              onChange={this.handleChange.bind(this, 'email')}
+              placeholder='Email'
+              type='text'
+              value={this.state.email} />
+            <input
+              className='login-password'
+              onChange={this.handleChange.bind(this, 'password')}
+              placeholder='Password'
+              type='text'
+              value={this.state.password} />
+            <input
+              className='login-verify-password'
+              onChange={this.handleChange.bind(this, 'verifyPassword')}
+              placeholder='Verify Password'
+              type='text'
+              value={this.state.verifyPassword} />
+            <input
+              className='login-submit'
+              onClick={this.handleCreateUser}
+              type='submit'
+              value='Create New User' />
+          </form>
+        </section>
+      </div>
     );
   }
 

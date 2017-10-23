@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'react';
+import { Link } from 'react-router-dom';
 import MovieCardContainer from '../MovieCard/MovieCardContainer';
 
 class FavoritesIndex extends Component {
@@ -53,11 +54,21 @@ class FavoritesIndex extends Component {
       : null;
 
     return (
-      <div>
+      <div className="favorites-page">
+        <nav className="nav-bar">
+          <h1 className="app-title">Movie Tracker</h1>
+          <section className="nav-btns">
+            <Link
+              className="see-all-movies-btn"
+              to="/">All Movies </Link>
+            <button className="see-favorites-btn">Favorites</button>
+          </section>
+        </nav>
         <h2 className="current-title">Favorites</h2>
         <section className="movie-index">
           {mappedFavoriteCards}
         </section>
+        <footer></footer>
       </div>
     );
   }

@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut } from './actions';
 
-const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
+const User = ({ loginSuccessful, handleLogOut }) => {
 
   const generateUserMenu = () => {
     return (
-      <article>
-        <h3>{`Welcome, ${currentUserName}`}</h3>
-        <button
-          onClick={handleLogOut} >
+      <button
+        onClick={handleLogOut}
+        className="link-to-log-in" >
           Log Out</button>
-      </article>
     );
   };
 
@@ -33,13 +31,11 @@ const User = ({ currentUserName, loginSuccessful, handleLogOut }) => {
 };
 
 User.propTypes = {
-  currentUserName: PropTypes.string,
   loginSuccessful: PropTypes.bool,
   handleLogOut: PropTypes.func
 };
 
 const mapStateToProps = store => ({
-  currentUserName: store.currentUserName,
   loginSuccessful: store.loginSuccessful
 });
 
