@@ -14,22 +14,24 @@
 
 .pick-a-tab {
   border: none;
-  background-color: #EB9B29;
-  margin: 10px;
+  background-color: #373737;
+  margin: 20px;
   color: #fff;
-  padding: 10px;
+  padding: 8px;
+  border-radius: 2px;
+  font-size: 90%;
 }
 
 .pick-a-tab:hover {
-  background-color: #e48227;
+  background-color: #EB9B29;
 }
 
 .disabled {
-  background-color: #D0D0D0;
+  background-color: #b6b6b6;
 }
 
 .disabled:hover {
-  background-color: #D0D0D0;
+  background-color: #b6b6b6;
 }
 
 .login-name,
@@ -44,21 +46,23 @@
   border: none;
   border-bottom: 2px solid #e48227;
   background-color: #F3F3F3;
+  font-size: 90%;
 }
 
 .login-submit {
-  padding: 5px;
+  padding: 8px;
   display: block;
   width: 70%;
   color: #fff;
   margin: 0 auto;
-  background-color: #EB9B29;
+  background-color: #373737;
   border: none;
   border-radius: 2px;
+  font-size: 90%;
 }
 
 .login-submit:hover {
-  background-color: #e48227;
+  background-color: #EB9B29;
 }
 
 .no-match {
