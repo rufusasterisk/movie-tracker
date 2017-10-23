@@ -25,6 +25,7 @@ export const addToFavorites = fetchPayloadBody => dispatch => {
       .then(response => response.json())
       .then(parsedData => console.log(parsedData))
     }
+    //else - remove it
   })
 }
 
