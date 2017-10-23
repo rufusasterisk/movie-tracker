@@ -10,10 +10,6 @@ class MovieIndex extends Component {
     super();
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props !== nextProps;
-  }
-
   generateCards(movieArray) {
     return movieArray.map(movie => (
       <MovieCardContainer
@@ -25,7 +21,7 @@ class MovieIndex extends Component {
         backdrop={movie.backdrop}
         movieID={movie.id}
         release={movie.release}
-        isFavorited={false} />
+        isFavorited={movie.isFavorited} />
     ));
   }
 

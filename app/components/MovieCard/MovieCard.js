@@ -1,31 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as actions from './actions';
 
-const MovieCard = (props) => {
-  const {backdrop, description, poster, title, voteAvg, overview, currentUserID, movieID, release, addCardToFavorites, increaseFavoriteCount, movieArray , favorites } = props;
+class MovieCard extends Component {
+  constructor() {
+    super();
 
-  const checkIfFavorited = () => {
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props !== nextProps;
+  }
+
+  checkIfFavorited = () => {
+    const { currentUserID, movieArray, updateIsFavorited, movieID } = this.props;
     if (currentUserID === '') {
-      alert('You have to have an account to favorite a movie!')
+      alert('You have to be logged in to favorite a movie!')
       //re-route to login page
     } else {
-      addToFavorites();
+      this.addToFavorites();
       const findNewFavorite = movieArray.find(movie => {
         return movieID === movie.id;
       })
       const favoritedIndex = movieArray.indexOf(findNewFavorite);
-      const newMovieArray = movieArray;
+      const newMovieArray = [...movieArray];
       newMovieArray[favoritedIndex].isFavorited = !movieArray[favoritedIndex].isFavorited;
-      console.log(newMovieArray);
-      //how do we send this newMovieArray up to store?!?!?!?!
-      
-    }
-  }
+      updateIsFavorited(newMovieArray);
+    };
+  };
 
-  const addToFavorites = () => {
-    increaseFavoriteCount();
-    addCardToFavorites({
+  addToFavorites = () => {
+    const { currentUserID, poster, voteAvg, description, movieID, release, title, isFavorited } = this.props;
+    this.props.addCardToFavorites({
       user_id: currentUserID,
       poster_path: poster,
       vote_average: voteAvg,
@@ -35,21 +41,78 @@ const MovieCard = (props) => {
       title,
       isFavorited: true
     })
+    this.props.addToFavorites({
+      user_id: currentUserID,
+      poster_path: poster,
+      vote_average: voteAvg,
+      overview: description,
+      movie_id: movieID,
+      release_date: release,
+      title,
+      isFavorited: true
+    })
+  };
+
+  // // const removeFromFavorites = () => {
+  // //   decreaseFavoriteCount();
+  // // }
+
+  favorited = () => {
+    const { poster } = this.props;
+    return (
+      <div className="movie-card">
+        <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
+        <div
+          className="full-btn"
+          onClick={this.checkIfFavorited}></div>
+      </div>
+    );
   }
 
-  const removeFromFavorites = () => {
-    decreaseFavoriteCount();
-    //call a util file to run the fetch on our API
-    //then call removeFromFavorites in actions,
+  notFavorited = () => {
+    const { poster } = this.props;
+    return (
+      <div className="movie-card">
+        <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
+        <div
+          className="empty-btn"
+          onClick={this.checkIfFavorited}></div>
+      </div>
+    );
   }
 
-  return (
-    <div className="movie-card">
-      <img className="poster-img" src={`http://image.tmdb.org/t/p/w500${poster}`} />
-      <div className="favorite-btn" onClick={checkIfFavorited}></div>
-    </div>
-  );
+  render() {
+
+    const { favorites, movieID } = this.props;
+    const typeCard = favorites.has(movieID)
+      ? this.favorited()
+      : this.notFavorited();
+
+    return (
+
+      <div>
+        <button onClick={ () => console.log(this.props)}>hi</button>
+        {typeCard}
+      </div>
+    );
+  }
+
+}
+
+MovieCard.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  voteAvg: PropTypes.number,
+  poster: PropTypes.string,
+  backdrop: PropTypes.string,
+  currentUserID: PropTypes.string,
+  movieID: PropTypes.number,
+  release: PropTypes.string
 };
+
+
+export default MovieCard;
+
 
 // {/* <h3>{title}</h3>
 // <ul>
@@ -58,13 +121,3 @@ const MovieCard = (props) => {
 // <li>{voteAvg}</li>
 // </ul> */}
 // {/* <img src={`http://image.tmdb.org/t/p/w1920${backdrop}`} /> */}
-
-MovieCard.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  voteAvg: PropTypes.number,
-  poster: PropTypes.string,
-  backdrop: PropTypes.string
-};
-
-export default MovieCard;

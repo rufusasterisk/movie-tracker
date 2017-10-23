@@ -3,6 +3,32 @@ export const addCardToFavorites = (data) => ({
   data
 })
 
+const buildFetchPayload = body => ({
+  body: JSON.stringify(body),
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'POST'
+});
+
+export const addToFavorites = fetchPayloadBody => dispatch => {
+  fetch(`http://localhost:3000/api/users/${fetchPayloadBody.user_id}/favorites`)
+  .then(response => response.json())
+  .then(parsedData => {
+    return parsedData.data.find(favorite => {
+        return favorite.movie_id === fetchPayloadBody.movie_id;
+    })
+  })
+  .then(found => {
+    if (!found) {
+      fetch(`http://localhost:3000/api/users/favorites/new`, buildFetchPayload(fetchPayloadBody))
+      .then(response => response.json())
+      .then(parsedData => console.log(parsedData))
+    }
+    //else - remove it
+  })
+}
+
 export const removeFromFavorites = (data) => ({
   type: 'REMOVE_FROM_FAVORITES',
   data
@@ -21,6 +47,7 @@ export const updateIsFavorited = (data) => ({
   type: 'UPDATE_IS_FAVORITED',
   data
 })
+
 export const setFavoriteCount = (data) => ({
   type: 'SET_FAVORITE_COUNT',
   data
@@ -40,19 +67,3 @@ export const fetchFavorites = (data) => ({
   type: 'FETCH_FAVORITES',
   data
 })
-
-const buildFetchPayload = body => ({
-  body: JSON.stringify(body),
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  method: 'POST'
-});
-
-export const addToFavorites = fetchPayloadBody => {
-  fetch(`http://localhost:3000/api/users/favorites/new`, buildFetchPayload(fetchPayloadBody))
-    .then(response => response.json())
-    .then(parsedData => {
-      dispatch(addCardToFavorites(parsedData.id))
-    })
-}
