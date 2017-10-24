@@ -1,4 +1,5 @@
 import hostAddress from '../utils/hostAddress';
+import getAllFavorites from './LoginContainerActions';
 
 export const buildFetchPayload = (body) => ({
   body: JSON.stringify(body),
@@ -72,6 +73,7 @@ export const tryLogin = fetchPayloadBody => dispatch => {
       dispatch(loginRequested(false));
       dispatch(loginFailure(false));
       dispatch(loginSuccessful(parsedData));
+      // dispatch(getAllFavorites(parsedData.id));
     })
     .catch(()=>{
       dispatch(loginFailure(true));
