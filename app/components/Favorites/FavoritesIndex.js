@@ -18,7 +18,7 @@ class FavoritesIndex extends Component {
 
     return favoritesArray.map(favorite => {
       return movieArray.reduce((acc, movie) => {
-        if (movie.id === favorite) {
+        if (movie.id === favorite.movie_id) {
           acc[movie.id] = movie;
         }
         return acc;
