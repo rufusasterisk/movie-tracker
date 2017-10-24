@@ -1,0 +1,49 @@
+favorited = () => {
+  const { poster } = this.props;
+  return (
+    <div className="movie-card">
+      <img
+        className="poster-img"
+        src={`http://image.tmdb.org/t/p/w500${poster}`} />
+      <div
+        className="full-btn"
+        onClick={this.checkIfFavorited}></div>
+    </div>
+  );
+}
+
+notFavorited = () => {
+  const { poster } = this.props;
+  return (
+    <div className="movie-card">
+      <img
+        className="poster-img"
+        src={`http://image.tmdb.org/t/p/w500${poster}`} />
+      <div
+        className="empty-btn"
+        onClick={this.checkIfFavorited}></div>
+    </div>
+  );
+}
+
+
+//pass in buttonClassName, poster, and appropriateFunction (add or Remove)
+
+return (
+  <div className="movie-card">
+    <img
+      className="poster-img"
+      src={`http://image.tmdb.org/t/p/w500${poster}`} />
+    <div
+      className={buttonClassName}
+      onClick={appropriateFunction}></div>
+  </div>
+);
+
+// in card container, we check favorite status and adjust
+foreach card in the array,
+
+<MovieCard
+  poster={arrayItem.poster}
+  buttonClassName={arrayItem.isFavorite ? "full-btn" : "empty-btn"}
+  appropriateFunction={arrayItem.isFavorite ? removeFunction : addFunction} />
