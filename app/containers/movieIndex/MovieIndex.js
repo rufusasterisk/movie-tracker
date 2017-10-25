@@ -91,8 +91,8 @@ const mapDispatchToProps = dispatch => ({
   },
   newRemoveFromFavorites: (actionProps) => {
     const theDispatchedObject = {
-      user_id: this.props.currentUserID,
-      movie_id: actionProps.id
+      user_id: actionProps.userID,
+      movie_id: actionProps.movieID
     };
     dispatch(newRemoveFromFavorites(theDispatchedObject));
   }
