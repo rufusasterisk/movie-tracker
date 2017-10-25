@@ -1,29 +1,46 @@
 import React, { Component } from 'react';
-import MovieCardContainer from '../../components/MovieCard/MovieCardContainer';
+// import MovieCardContainer from '../../components/MovieCard/MovieCardContainer';
 import { connect } from 'react-redux';
 import getRecentMovies from '../../utils/getRecentMovies';
 import { displayMovies } from '../../actions/MovieIndexActions';
 import PropTypes from 'prop-types';
+import MovieCard from '../../components/MovieCard/MovieCard';
+import {
+  newAddToFavorites,
+  newRemoveFromFavorites } from '../../actions/MovieCardActions';
 
 class MovieIndex extends Component {
   constructor() {
     super();
   }
 
-  generateCards(movieArray) {
-    return movieArray.map(movie => (
-      <MovieCardContainer
-        key={`CardID-${movie.id}`}
-        title={movie.title}
-        description={movie.description}
-        voteAvg={movie.voteAvg}
-        poster={movie.poster}
-        backdrop={movie.backdrop}
-        movieID={movie.id}
-        release={movie.release}
-        isFavorited={movie.isFavorited} />
-    ));
+  shouldComponentUpdate(nextProps) {
+    return nextProps !== this.props;
   }
+
+  generateCards(movieArray) {
+    // console.log(this.props);
+    return movieArray.map( (movie) => {
+      return (
+        <MovieCard
+          key={`CardID-${movie.id}`}
+          movieID={movie.id}
+          poster={movie.poster}
+          title={movie.title}
+          releaseDate={movie.release}
+          voteAverage={movie.voteAvg}
+          overview={movie.description}
+          buttonClassName={movie.isFavorite ? "full-btn" : "empty-btn"}
+          // appropriateFunction={
+          //   movie.isFavorite ?
+          //     this.props.newRemoveFromFavorites :
+          //     this.props.newAddToFavorites}
+          userID={this.props.currentUserID}
+          appropriateFunction={this.props.newAddToFavorites}  />
+      );
+    });
+  }
+
 
   render() {
     const { movieArray } = this.props;
@@ -44,11 +61,40 @@ class MovieIndex extends Component {
 }
 
 MovieIndex.propTypes = {
-  movieArray: PropTypes.array
+  movieArray: PropTypes.array,
+  newAddToFavorites: PropTypes.func,
+  newRemoveFromFavorites: PropTypes.func
 };
 
 const mapStateToProps = store => ({
-  movieArray: store.displayMoviesReducer
+  movieArray: store.displayMoviesReducer,
+  currentUserID: store.currentUserID
 });
 
-export default connect(mapStateToProps, undefined)(MovieIndex);
+const mapDispatchToProps = dispatch => ({
+  newAddToFavorites: (actionProps) => {
+    if (actionProps.userID === "") {
+      alert('You must login in to favorite a movie!');
+      return;
+    }
+    const theDispatchedObject = {
+      movie_id: actionProps.movieID,
+      user_id: actionProps.userID,
+      title: actionProps.title,
+      poster_path: actionProps.poster,
+      release_date: actionProps.releaseDate,
+      vote_average: actionProps.voteAverage,
+      overview: actionProps.overview
+    };
+    dispatch(newAddToFavorites(theDispatchedObject));
+  },
+  newRemoveFromFavorites: (actionProps) => {
+    const theDispatchedObject = {
+      user_id: this.props.currentUserID,
+      movie_id: actionProps.id
+    };
+    dispatch(newRemoveFromFavorites(theDispatchedObject));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieIndex);

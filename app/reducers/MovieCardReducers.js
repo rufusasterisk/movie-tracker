@@ -16,16 +16,19 @@ export const favoritesCounter = (state = 0, action) => {
 export const favorites = (state = [], action) => {
   switch (action.type) {
   case 'ADD_TO_FAVORITES':
-    return [...state, action.info.movie_id];
-
-  case 'RESET_FAVORITES':
-    return state.map(movie=> {
-      movie.isFavorited = false;
-    });
-  case 'SHOW_FAVORITES':
+    return [...state, Object.assign({}, action.info, {isFavorite: true})];
+  // case 'RESET_FAVORITES':
+  //   return [];
+  // case 'SHOW_FAVORITES':
+  //   return state.filter(movie => {
+  //     return movie.isFavorited;
+  //   });
+  case 'REMOVE_FROM_FAVORITES':
     return state.filter(movie => {
-      return movie.isFavorited;
+      return movie.movie_id !== action.info.movie_id;
     });
+  case 'FETCH_FAVORITES':
+    return action.array; //the array of movies from the API get all favorites call
   default:
     return state;
   }
