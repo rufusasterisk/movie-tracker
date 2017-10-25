@@ -27,7 +27,7 @@ export const newAddToFavorites = fetchPayloadBody => dispatch => {
       dispatch(addToStoreFavorites(fetchPayloadBody));
     })
     .catch( ()=> {
-      //these are good to have
+      alert('There was an error handling your request. Please try again.');
     });
 };
 
@@ -41,7 +41,7 @@ export const newRemoveFromFavorites = fetchPayloadBody => dispatch => {
       dispatch(removeFromStoreFavorites(fetchPayloadBody));
     })
     .catch(()=> {
-      //these are good to have
+      alert('There was an error handling your request. Please try again.');
     });
 };
 

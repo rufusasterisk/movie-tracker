@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MovieCardContainer from '../MovieCard/MovieCardContainer';
+import MovieCard from '../MovieCard/MovieCard';
 
 class FavoritesIndex extends Component {
   constructor() {
@@ -26,31 +27,55 @@ class FavoritesIndex extends Component {
     });
   }
 
-  generateCards() {
-    const favoriteMovies = this.generateFavoriteMovies();
+  // generateCards() {
+  //   const favoriteMovies = this.generateFavoriteMovies();
+  //
+  //   const movieData = favoriteMovies.map(movie => {
+  //     return Object.values(movie);
+  //   });
+  //
+  //   return movieData.map(movie => (
+  //     <MovieCardContainer
+  //       key={`FaveID-${movie[0].id}`}
+  //       title={movie[0].title}
+  //       description={movie[0].description}
+  //       voteAvg={movie[0].voteAvg}
+  //       poster={movie[0].poster}
+  //       backdrop={movie[0].backdrop}
+  //       movieID={movie[0].id}
+  //       release={movie[0].release}
+  //       isFavorited={true} />
+  //   ));
+  // }
 
-    const movieData = favoriteMovies.map(movie => {
-      return Object.values(movie);
+  generateCards(movieArray) {
+    // console.log(this.props);
+    return movieArray.map( (movie) => {
+      console.log(movie);
+      // const className = movie.i
+      return (
+        <MovieCard
+          key={`CardID-${movie.movie_id}`}
+          movieID={movie.movie_id}
+          poster={movie.poster_path}
+          title={movie.title}
+          releaseDate={movie.release}
+          voteAverage={movie.vote_average}
+          overview={movie.overview}
+          buttonClassName={movie.isFavorite ? "full-btn" : "empty-btn"}
+          appropriateFunction={
+            movie.isFavorite ?
+              this.props.newRemoveFromFavorites :
+              this.props.newAddToFavorites}
+          userID={this.props.currentUserID} />
+      );
     });
-
-    return movieData.map(movie => (
-      <MovieCardContainer
-        key={`FaveID-${movie[0].id}`}
-        title={movie[0].title}
-        description={movie[0].description}
-        voteAvg={movie[0].voteAvg}
-        poster={movie[0].poster}
-        backdrop={movie[0].backdrop}
-        movieID={movie[0].id}
-        release={movie[0].release}
-        isFavorited={true} />
-    ));
   }
 
   render() {
     const { movieArray } = this.props;
     const mappedFavoriteCards = movieArray.length
-      ? this.generateCards()
+      ? this.generateCards(this.props.favorites)
       : null;
 
     return (
@@ -77,7 +102,10 @@ class FavoritesIndex extends Component {
 
 FavoritesIndex.propTypes = {
   favorites: PropTypes.array,
-  movieArray: PropTypes.array
+  movieArray: PropTypes.array,
+  currentUserID: PropTypes.number,
+  newAddToFavorites: PropTypes.func,
+  newRemoveFromFavorites: PropTypes.func
 };
 
 export default FavoritesIndex;
