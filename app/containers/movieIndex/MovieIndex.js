@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import MovieCardContainer from '../../components/MovieCard/MovieCardContainer';
 import { connect } from 'react-redux';
 import getRecentMovies from '../../utils/getRecentMovies';
 import { displayMovies } from '../../actions/MovieIndexActions';
@@ -19,9 +18,7 @@ class MovieIndex extends Component {
   }
 
   generateCards(movieArray) {
-    // console.log(this.props);
     return movieArray.map( (movie) => {
-      // const className = movie.i
       return (
         <MovieCard
           key={`CardID-${movie.id}`}

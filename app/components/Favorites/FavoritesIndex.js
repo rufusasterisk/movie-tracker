@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import MovieCardContainer from '../MovieCard/MovieCardContainer';
 import MovieCard from '../MovieCard/MovieCard';
 
 class FavoritesIndex extends Component {
@@ -13,46 +12,11 @@ class FavoritesIndex extends Component {
     return this.props !== nextProps;
   }
 
-  generateFavoriteMovies() {
-    const { favorites, movieArray } = this.props;
-    const favoritesArray = [...favorites];
-
-    return favoritesArray.map(favorite => {
-      return movieArray.reduce((acc, movie) => {
-        if (movie.id === favorite.movie_id) {
-          acc[movie.id] = movie;
-        }
-        return acc;
-      }, {});
-    });
-  }
-
-  // generateCards() {
-  //   const favoriteMovies = this.generateFavoriteMovies();
-  //
-  //   const movieData = favoriteMovies.map(movie => {
-  //     return Object.values(movie);
-  //   });
-  //
-  //   return movieData.map(movie => (
-  //     <MovieCardContainer
-  //       key={`FaveID-${movie[0].id}`}
-  //       title={movie[0].title}
-  //       description={movie[0].description}
-  //       voteAvg={movie[0].voteAvg}
-  //       poster={movie[0].poster}
-  //       backdrop={movie[0].backdrop}
-  //       movieID={movie[0].id}
-  //       release={movie[0].release}
-  //       isFavorited={true} />
-  //   ));
-  // }
-
   generateCards(movieArray) {
-    // console.log(this.props);
+    if (movieArray.length === 0) {
+      return (<h4>You have no favorites</h4>);
+    }
     return movieArray.map( (movie) => {
-      console.log(movie);
-      // const className = movie.i
       return (
         <MovieCard
           key={`CardID-${movie.movie_id}`}
