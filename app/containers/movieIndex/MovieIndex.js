@@ -21,6 +21,7 @@ class MovieIndex extends Component {
   generateCards(movieArray) {
     // console.log(this.props);
     return movieArray.map( (movie) => {
+      // const className = movie.i
       return (
         <MovieCard
           key={`CardID-${movie.id}`}
@@ -30,13 +31,12 @@ class MovieIndex extends Component {
           releaseDate={movie.release}
           voteAverage={movie.voteAvg}
           overview={movie.description}
-          buttonClassName={movie.isFavorite ? "full-btn" : "empty-btn"}
-          // appropriateFunction={
-          //   movie.isFavorite ?
-          //     this.props.newRemoveFromFavorites :
-          //     this.props.newAddToFavorites}
-          userID={this.props.currentUserID}
-          appropriateFunction={this.props.newAddToFavorites}  />
+          buttonClassName={movie.isFavorited ? "full-btn" : "empty-btn"}
+          appropriateFunction={
+            movie.isFavorited ?
+              this.props.newRemoveFromFavorites :
+              this.props.newAddToFavorites}
+          userID={this.props.currentUserID} />
       );
     });
   }
@@ -63,7 +63,8 @@ class MovieIndex extends Component {
 MovieIndex.propTypes = {
   movieArray: PropTypes.array,
   newAddToFavorites: PropTypes.func,
-  newRemoveFromFavorites: PropTypes.func
+  newRemoveFromFavorites: PropTypes.func,
+  currentUserID: PropTypes.number
 };
 
 const mapStateToProps = store => ({
