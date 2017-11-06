@@ -63,22 +63,20 @@ class Login extends Component {
   }
 
   generateCreateUserStatus(){
-    if(this.props.loginSuccessful){
+    if (this.props.loginSuccessful){
       return (
         <Redirect to="/" />
       );
     }
-
-    if(this.props.createUserFailure) {
-      return(
+    if (this.props.createUserFailure) {
+      return (
         <div className="no-match">Email is already in use</div>
-      )
+      );
     }
-
     if (this.props.createUserRequested) {
       return (
         <div>LOADING!!!</div>
-      )
+      );
     }
   }
 
@@ -185,7 +183,9 @@ Login.propTypes = {
   loginFailure: PropTypes.bool,
   loginSuccessful: PropTypes.bool,
   tryLogin: PropTypes.func,
-  createUser: PropTypes.func
+  createUser: PropTypes.func,
+  createUserFailure: PropTypes.bool,
+  createUserRequested: PropTypes.bool
 };
 
 export default Login;

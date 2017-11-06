@@ -27,7 +27,7 @@ export const newAddToFavorites = fetchPayloadBody => dispatch => {
       dispatch(addToStoreFavorites(fetchPayloadBody));
     })
     .catch( ()=> {
-      //these are good to have
+      alert('There was an error handling your request. Please try again.');
     });
 };
 
@@ -41,7 +41,7 @@ export const newRemoveFromFavorites = fetchPayloadBody => dispatch => {
       dispatch(removeFromStoreFavorites(fetchPayloadBody));
     })
     .catch(()=> {
-      //these are good to have
+      alert('There was an error handling your request. Please try again.');
     });
 };
 
@@ -54,43 +54,10 @@ export const getAllFavorites = userID => dispatch => {
 
 };
 
-
-// export const addToFavorites = fetchPayloadBody => dispatch => {
-//   fetch(`http://localhost:3000/api/users/${fetchPayloadBody.user_id}/favorites`)
-//     .then(response => response.json())
-//     .then(parsedData => {
-//       return parsedData.data.find(favorite => {
-//         return favorite.movie_id === fetchPayloadBody.movie_id;
-//       });
-//     })
-//     .then(found => {
-//       if (!found) { //addFunction
-//         fetch(`http://localhost:3000/api/users/favorites/new`,
-//           buildFetchPayload(fetchPayloadBody));
-//       } else { //removeFunction
-//         fetch(
-//           `http://localhost:3000/api/users/
-//               ${fetchPayloadBody.user_id}/favorites/
-//               ${fetchPayloadBody.movie_id}`,
-//           buildDeletePayload(fetchPayloadBody)
-//         );
-//       }
-//     });
-// };
-
 export const removeFromStoreFavorites = (info) => ({
   type: 'REMOVE_FROM_FAVORITES',
   info
 });
-
-// export const resetFavorites = () => ({
-//   type: 'RESET_FAVORITES'
-// });
-
-// export const showFavorites = (info) => ({
-//   type: 'SHOW_FAVORITES',
-//   info
-// });
 
 export const updateIsFavorited = (info) => ({
   type: 'UPDATE_IS_FAVORITED',

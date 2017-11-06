@@ -27,12 +27,12 @@ export const loginSuccessful = (state = false, action) => {
   }
 };
 
-export const currentUserID = (state = '', action) => {
+export const currentUserID = (state = -1, action) => {
   switch (action.type) {
   case 'LOGIN_SUCCESSFUL':
     return action.userData.data.id;
   case 'LOG_OUT':
-    return '';
+    return -1;
   default:
     return state;
   }
